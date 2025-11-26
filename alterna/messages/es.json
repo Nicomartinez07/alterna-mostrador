@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "processes": "Procesos",
+    "menu": "Carta",
+    "market": "Mercado",
+    "contact": "Contacto",
+    "takeaway": "Take Away"
+  },
+  "common": {
+    "close": "Cerrar",
+    "open": "Abrir",
+    "language": "Idioma",
+    "loading": "Cargando...",
+    "error": "Error"
+  },
+  "home": {
+    "hero_cta": "Ver carta",
+    "welcome": "Bienvenidos"
+  },
+  "cart": {
+    "title": "Carrito",
+    "empty": "Tu carrito está vacío",
+    "total": "Total",
+    "send_whatsapp": "Enviar pedido por WhatsApp",
+    "add": "Añadir",
+    "remove": "Quitar"
+  },
+  "footer": {
+    "follow_us": "Síguenos",
+    "contact_us": "Contáctanos",
+    "rights": "Todos los derechos reservados"
+  }
+}

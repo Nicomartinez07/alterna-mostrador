@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "Inici",
+    "processes": "Processos",
+    "menu": "Carta",
+    "market": "Mercat",
+    "contact": "Contacte",
+    "takeaway": "Take Away"
+  },
+  "common": {
+    "close": "Tancar",
+    "open": "Obrir",
+    "language": "Idioma",
+    "loading": "Carregant...",
+    "error": "Error"
+  },
+  "home": {
+    "hero_cta": "Veure carta",
+    "welcome": "Benvinguts"
+  },
+  "cart": {
+    "title": "Cistella",
+    "empty": "La teva cistella està buida",
+    "total": "Total",
+    "send_whatsapp": "Enviar comanda per WhatsApp",
+    "add": "Afegir",
+    "remove": "Treure"
+  },
+  "footer": {
+    "follow_us": "Segueix-nos",
+    "contact_us": "Contacta'ns",
+    "rights": "Tots els drets reservats"
+  }
+}

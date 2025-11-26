@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "Home",
+    "processes": "Process",
+    "menu": "Menu",
+    "market": "Market",
+    "contact": "Contact",
+    "takeaway": "Take Away"
+  },
+  "common": {
+    "close": "Close",
+    "open": "Open",
+    "language": "Language",
+    "loading": "Loading...",
+    "error": "Error"
+  },
+  "home": {
+    "hero_cta": "View menu",
+    "welcome": "Welcome"
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "total": "Total",
+    "send_whatsapp": "Send order via WhatsApp",
+    "add": "Add",
+    "remove": "Remove"
+  },
+  "footer": {
+    "follow_us": "Follow us",
+    "contact_us": "Contact us",
+    "rights": "All rights reserved"
+  }
+}

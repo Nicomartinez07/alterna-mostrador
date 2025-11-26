@@ -1,0 +1,167 @@
+import type {
+  StrapiResponse,
+  StrapiSingleResponse,
+  SiteSettings,
+  Product,
+  ProductCategory,
+  MarketItem,
+  ProcessStep,
+} from '@/types/strapi';
+
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+const STRAPI_TOKEN = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
+
+/**
+ * Simple fetch function for Strapi API
+ */
+async function fetchStrapi(endpoint: string): Promise<any> {
+  const url = `${STRAPI_URL}/api${endpoint}`;
+  
+  console.log('🔍 Fetching:', url);
+
+  const headers: HeadersInit = {
+    'Content-Type': 'application/json',
+  };
+
+  if (STRAPI_TOKEN) {
+    headers['Authorization'] = `Bearer ${STRAPI_TOKEN}`;
+  }
+
+  try {
+    const response = await fetch(url, {
+      headers,
+      cache: 'no-store', // Empezamos sin cache para debug
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('❌ Strapi error:', response.status, errorText);
+      throw new Error(`Strapi error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('✅ Data received:', Object.keys(data));
+    return data;
+  } catch (error) {
+    console.error('❌ Fetch error:', error);
+    throw error;
+  }
+}
+
+/**
+ * Get site settings (single type)
+ */
+export async function getSiteSettings(): Promise<SiteSettings | null> {
+  try {
+    const data = await fetchStrapi(`/site-setting?populate=*`);
+    // Data viene así: { data: { id: 2, nombre_local: ... } }
+    return data.data || null;
+  } catch (error) {
+    console.error('Error fetching site settings:', error);
+    return null;
+  }
+}
+
+/**
+ * Get all products
+ */
+export async function getProducts(locale: string = 'es'): Promise<Product[]> {
+  try {
+    const data = await fetchStrapi(`/products?locale=${locale}&populate=*`);
+    return data.data || [];
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return [];
+  }
+}
+
+/**
+ * Get single product by slug
+ */
+export async function getProductBySlug(
+  slug: string,
+  locale: string = 'es'
+): Promise<Product | null> {
+  try {
+    const data = await fetchStrapi(
+      `/products?filters[slug][$eq]=${slug}&locale=${locale}&populate=*`
+    );
+    return data.data?.[0] || null;
+  } catch (error) {
+    console.error('Error fetching product:', error);
+    return null;
+  }
+}
+
+/**
+ * Get all product categories
+ */
+export async function getProductCategories(locale: string = 'es'): Promise<ProductCategory[]> {
+  try {
+    const data = await fetchStrapi(`/product-categories?locale=${locale}`);
+    return data.data || [];
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    return [];
+  }
+}
+
+/**
+ * Get products by category
+ */
+export async function getProductsByCategory(
+  categoryId: number,
+  locale: string = 'es'
+): Promise<Product[]> {
+  try {
+    const data = await fetchStrapi(
+      `/products?filters[category][id][$eq]=${categoryId}&locale=${locale}&populate=*`
+    );
+    return data.data || [];
+  } catch (error) {
+    console.error('Error fetching products by category:', error);
+    return [];
+  }
+}
+
+/**
+ * Get all market items
+ */
+export async function getMarketItems(locale: string = 'es'): Promise<MarketItem[]> {
+  try {
+    const data = await fetchStrapi(`/market-items?locale=${locale}&populate=*`);
+    return data.data || [];
+  } catch (error) {
+    console.error('Error fetching market items:', error);
+    return [];
+  }
+}
+
+/**
+ * Get all process steps
+ */
+export async function getProcessSteps(locale: string = 'es'): Promise<ProcessStep[]> {
+  try {
+    const data = await fetchStrapi(`/process-steps?locale=${locale}&populate=*&sort=step_order:asc`);
+    return data.data || [];
+  } catch (error) {
+    console.error('Error fetching process steps:', error);
+    return [];
+  }
+}
+
+/**
+ * Helper to get full image URL from Strapi
+ */
+export function getStrapiImageUrl(url: string | undefined): string {
+  if (!url) return '/images/placeholder.jpg';
+  if (url.startsWith('http')) return url;
+  return `${STRAPI_URL}${url}`;
+}
+
+/**
+ * Helper to get image alt text
+ */
+export function getStrapiImageAlt(image: any, fallback: string = 'Image'): string {
+  return image?.attributes?.alternativeText || image?.alternativeText || fallback;
+}
