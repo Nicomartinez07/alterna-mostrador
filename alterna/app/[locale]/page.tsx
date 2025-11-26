@@ -3,6 +3,8 @@ import { useTranslations } from 'next-intl';
 import { getSiteSettings } from '@/lib/strapi';
 import Hero from '@/components/ui/Hero';
 import Section from '@/components/ui/Section';
+// 1. Importamos el Link inteligente que configuramos antes
+import { Link } from '@/navigation'; 
 
 export default async function HomePage({
   params,
@@ -10,6 +12,8 @@ export default async function HomePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  
+  // Habilita la optimización estática para este locale
   setRequestLocale(locale);
   
   const settings = await getSiteSettings();
@@ -30,13 +34,13 @@ function HomeContent({
 
   return (
     <>
-      {/* Hero */}
+      {/* Hero Section */}
       <Hero
         title={settings?.nombre_local || 'Alterna Mostrador'}
         tagline={settings?.tagline || t('welcome')}
-        imageUrl={settings?.hero_image?.url}
+        imageUrl={settings?.hero_image?.data?.attributes?.url}
         ctaText={t('hero_cta')}
-        ctaHref="/carta"
+        ctaHref="/carta" 
         locale={locale}
       />
 
@@ -63,7 +67,7 @@ function HomeContent({
         </div>
       </Section>
 
-      {/* CTA Section */}
+      {/* CTA Section (Aquí es donde estaba roto) */}
       <Section className="bg-green-50">
         <div className="text-center">
           <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
@@ -72,19 +76,23 @@ function HomeContent({
           <p className="text-gray-600 mb-6 max-w-xl mx-auto">
             Visítanos en nuestro local o haz tu pedido para llevar
           </p>
+          
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            
-              href={`/${locale}/carta`}
+            {/* Botón 1: Carta */}
+            <Link
+              href="/carta"
               className="inline-block px-8 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors"
             >
               Ver carta
-            </a>
+            </Link>
             
-              href={`/${locale}/contacto`}
+            {/* Botón 2: Contacto */}
+            <Link
+              href="/contacto"
               className="inline-block px-8 py-3 border-2 border-gray-900 text-gray-900 font-semibold rounded-lg hover:bg-gray-900 hover:text-white transition-colors"
             >
               Cómo llegar
-            </a>
+            </Link>
           </div>
         </div>
       </Section>
