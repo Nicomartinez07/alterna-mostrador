@@ -30,5 +30,14 @@
     "follow_us": "Síguenos",
     "contact_us": "Contáctanos",
     "rights": "Todos los derechos reservados"
+  },
+  "market": {
+    "title": "Mercado Semanal",
+    "subtitle": "Productos de colaboradores locales",
+    "no_items": "No hay productos disponibles",
+    "contact_vendor": "Contactar vendedor",
+    "available_from": "Disponible desde",
+    "available_until": "Disponible hasta",
+    "vendor": "Vendedor"
   }
 }

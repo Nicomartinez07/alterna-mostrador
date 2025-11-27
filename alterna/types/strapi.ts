@@ -121,23 +121,25 @@ export interface Product {
 // Market Item
 export interface MarketItem {
   id: number;
-  attributes: {
-    title: string;
-    price: number;
-    vendor_name: string;
-    vendor_contact_whatsapp?: string;
-    vendor_instagram?: string;
-    description?: string;
-    available_from?: string;
-    available_to?: string;
-    visible: boolean;
-    locale: string;
-    createdAt: string;
-    updatedAt: string;
-    photo?: {
-      data: StrapiImage | null;
-    };
-  };
+  documentId: string;
+  title: string;
+  price: number;
+  vendor_name: string;
+  vendor_contact_whatsapp?: string;
+  vendor_instagram?: string;
+  description?: string;
+  available_from?: string;
+  available_to?: string;
+  visible: boolean;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  photo?: {
+    id: number;
+    url: string;
+    alternativeText?: string;
+    name: string;
+  } | null;
 }
 
 
