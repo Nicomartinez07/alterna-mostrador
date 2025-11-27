@@ -32,15 +32,20 @@ function HomeContent({
 }) {
   const t = useTranslations('home');
 
+  // Debug: ver estructura de datos
+  console.log('🔍 Settings:', JSON.stringify(settings, null, 2));
+  console.log('🔍 Hero image:', settings?.hero_image);
+
+
   return (
     <>
       {/* Hero Section */}
       <Hero
         title={settings?.nombre_local || 'Alterna Mostrador'}
         tagline={settings?.tagline || t('welcome')}
-        imageUrl={settings?.hero_image?.data?.attributes?.url}
+        imageUrl={settings?.hero_image?.url} 
         ctaText={t('hero_cta')}
-        ctaHref="/carta" 
+        ctaHref="/carta"
         locale={locale}
       />
 

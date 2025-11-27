@@ -59,9 +59,9 @@ export default async function TestStrapiPage({
           <div className="space-y-2">
             {categories.map((cat) => (
               <div key={cat.id} className="p-3 bg-gray-50 rounded">
-                <p className="font-medium">{cat.attributes.name}</p>
+                <p className="font-medium">{cat.name}</p>
                 <p className="text-sm text-gray-600">
-                  Slug: {cat.attributes.slug} | Order: {cat.attributes.order}
+                  Slug: {cat.slug} | Order: {cat.order}
                 </p>
               </div>
             ))}
@@ -76,23 +76,23 @@ export default async function TestStrapiPage({
           <div className="grid gap-4 sm:grid-cols-2">
             {products.map((product) => (
               <div key={product.id} className="border rounded-lg p-4">
-                {product.attributes.photo?.data && (
+                {product.photo?.url && (
                   <img
-                    src={getStrapiImageUrl(product.attributes.photo.data.attributes.url)}
-                    alt={product.attributes.title}
+                    src={getStrapiImageUrl(product.photo.url)}
+                    alt={product.title}
                     className="w-full h-32 object-cover rounded mb-2"
                   />
                 )}
-                <h3 className="font-semibold text-lg">{product.attributes.title}</h3>
+                <h3 className="font-semibold text-lg">{product.title}</h3>
                 <p className="text-gray-600 text-sm line-clamp-2">
-                  {product.attributes.description}
+                  {product.description}
                 </p>
                 <p className="text-lg font-bold text-green-600 mt-2">
-                  €{product.attributes.price.toFixed(2)}
+                  €{product.price.toFixed(2)}
                 </p>
-                {product.attributes.category?.data && (
+                {product.category && (
                   <p className="text-xs text-gray-500 mt-1">
-                    {product.attributes.category.data.attributes.name}
+                    {product.category.name}
                   </p>
                 )}
               </div>
@@ -108,12 +108,12 @@ export default async function TestStrapiPage({
           <div className="space-y-3">
             {marketItems.map((item) => (
               <div key={item.id} className="border-l-4 border-green-500 pl-4 py-2">
-                <h3 className="font-semibold">{item.attributes.title}</h3>
+                <h3 className="font-semibold">{item.title}</h3>
                 <p className="text-sm text-gray-600">
-                  Vendor: {item.attributes.vendor_name}
+                  Vendor: {item.vendor_name}
                 </p>
                 <p className="text-green-600 font-bold">
-                  €{item.attributes.price.toFixed(2)}
+                  €{item.price.toFixed(2)}
                 </p>
               </div>
             ))}
@@ -129,12 +129,14 @@ export default async function TestStrapiPage({
             {processSteps.map((step) => (
               <div key={step.id} className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">
-                  {step.attributes.step_order}
+                  {step.step_order}
                 </div>
                 <div>
-                  <h3 className="font-semibold">{step.attributes.title}</h3>
+                  <h3 className="font-semibold">{step.title}</h3>
                   <p className="text-sm text-gray-600">
-                    {step.attributes.description.substring(0, 100)}...
+                    {typeof step.description === 'string' 
+                      ? step.description.substring(0, 100)
+                      : 'Process description'}...
                   </p>
                 </div>
               </div>

@@ -77,40 +77,45 @@ export interface SiteSettings {
 // Product Category
 export interface ProductCategory {
   id: number;
-  attributes: {
-    name: string;
-    slug: string;
-    order: number;
-    locale: string;
-    createdAt: string;
-    updatedAt: string;
-  };
+  documentId: string;
+  name: string;
+  slug: string;
+  order: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
 }
 
 // Product
 export interface Product {
   id: number;
-  attributes: {
-    title: string;
+  documentId: string;
+  title: string;
+  slug: string;
+  description: string;
+  price: number;
+  ingredients?: string;
+  allergens?: string;
+  is_on_menu: boolean;
+  is_takeaway_available: boolean;
+  visible: boolean;
+  order: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  category?: {
+    id: number;
+    documentId: string;
+    name: string;
     slug: string;
-    description: string;
-    price: number;
-    ingredients?: string;
-    allergens?: string;
-    is_on_menu: boolean;
-    is_takeaway_available: boolean;
-    visible: boolean;
     order: number;
-    locale: string;
-    createdAt: string;
-    updatedAt: string;
-    category?: {
-      data: ProductCategory | null;
-    };
-    photo?: {
-      data: StrapiImage | null;
-    };
-  };
+  } | null;
+  photo?: {
+    id: number;
+    url: string;
+    alternativeText?: string;
+    name: string;
+  } | null;
 }
 
 // Market Item
@@ -135,18 +140,36 @@ export interface MarketItem {
   };
 }
 
+
 // Process Step
 export interface ProcessStep {
   id: number;
-  attributes: {
-    title: string;
-    description: string;
-    step_order: number;
-    locale: string;
+  documentId: string;
+  title: string;
+  description: any; // Puede ser string o array de bloques rich text
+  step_order: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  media?: {
+    id: number;
+    documentId: string;
+    name: string;
+    alternativeText: string | null;
+    caption: string | null;
+    width: number;
+    height: number;
+    formats: any;
+    hash: string;
+    ext: string;
+    mime: string;
+    size: number;
+    url: string;
+    previewUrl: string | null;
+    provider: string;
+    provider_metadata: any;
     createdAt: string;
     updatedAt: string;
-    media?: {
-      data: StrapiImage | null;
-    };
-  };
+    publishedAt: string;
+  } | null;
 }

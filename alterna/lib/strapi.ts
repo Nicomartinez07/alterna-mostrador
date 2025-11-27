@@ -158,7 +158,6 @@ export function getStrapiImageUrl(url: string | undefined): string {
   if (url.startsWith('http')) return url;
   return `${STRAPI_URL}${url}`;
 }
-
 /**
  * Helper to get image alt text
  */

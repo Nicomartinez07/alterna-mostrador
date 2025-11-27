@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from '@/navigation';
 import { useTransition } from 'react';
-import { Globe } from 'lucide-react';
+import { Earth } from 'lucide-react';
 // 1. CAMBIO: Importamos 'routing' en lugar de 'locales' sueltos
 // y el tipo 'Locale' para que TypeScript no se queje
 import { routing, type Locale } from '@/routing'; 
@@ -36,7 +36,7 @@ export default function LanguageSwitcher({ currentLocale }: LanguageSwitcherProp
         className="flex items-center gap-1 px-2 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
         disabled={isPending}
       >
-        <Globe className="w-4 h-4" />
+        <Earth className="w-4 h-4" />
         {/* Asegúrate de que currentLocale sea válido o usa un fallback visual */}
         <span>{localeNames[currentLocale] || currentLocale.toUpperCase()}</span>
       </button>

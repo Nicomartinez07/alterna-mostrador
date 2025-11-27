@@ -19,7 +19,11 @@ export default function Hero({
   ctaHref,
   locale,
 }: HeroProps) {
-  const heroImage = getStrapiImageUrl(imageUrl);
+  const heroImage = imageUrl 
+    ? getStrapiImageUrl(imageUrl) 
+    : 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1600&h=900&fit=crop'; 
+  
+  console.log('🖼️ Hero image URL:', heroImage);
 
   return (
     <section className="relative w-full h-[70vh] min-h-[500px] max-h-[800px] overflow-hidden">

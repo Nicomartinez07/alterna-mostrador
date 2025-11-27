@@ -32,7 +32,7 @@ export default function Header({ locale, siteName = 'Alterna Mostrador' }: Heade
           {/* Logo / Site name */}
           <Link 
             href={`/${locale}`}
-            className="text-lg font-semibold text-gray-900 hover:text-gray-700 transition-colors"
+            className="text-lg font-semibold text-[#163834] hover:text-[#163834] transition-colors"
           >
             {siteName}
           </Link>
