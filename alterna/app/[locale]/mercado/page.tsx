@@ -23,7 +23,7 @@ export default async function MercadoPage({
       <Section
         title="Mercado Semanal"
         subtitle="Productos seleccionados de nuestros colaboradores"
-        className="bg-gradient-to-b from-amber-50 to-white"
+        className="bg-gradient-to-b from-amber-50 to-gray-50"
       >
         <p className="text-center text-gray-600 max-w-3xl mx-auto mb-8">
           Cada semana traemos productos artesanales de pequeños productores locales. 

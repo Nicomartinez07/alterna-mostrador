@@ -6,15 +6,20 @@ import { useTranslations } from 'next-intl';
 import { Menu, X, ShoppingCart } from 'lucide-react';
 import MobileMenu from './MobileMenu';
 import LanguageSwitcher from './LanguageSwitcher';
+import CartDrawer from '../cart/CartDrawer';
+import { useCart } from '@/hooks/useCart';
 
 interface HeaderProps {
   locale: string;
   siteName?: string;
+  whatsappNumber?: string;
 }
 
-export default function Header({ locale, siteName = 'Alterna Mostrador' }: HeaderProps) {
+export default function Header({ locale, siteName = 'Alterna Mostrador', whatsappNumber }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const t = useTranslations('nav');
+  const { itemCount } = useCart();
 
   return (
     <>
@@ -32,7 +37,7 @@ export default function Header({ locale, siteName = 'Alterna Mostrador' }: Heade
           {/* Logo / Site name */}
           <Link 
             href={`/${locale}`}
-            className="text-lg font-semibold text-[#163834] hover:text-[#163834] transition-colors"
+            className="text-lg font-semibold text-gray-900 hover:text-gray-700 transition-colors"
           >
             {siteName}
           </Link>
@@ -42,14 +47,16 @@ export default function Header({ locale, siteName = 'Alterna Mostrador' }: Heade
             <LanguageSwitcher currentLocale={locale} />
             
             <button
+              onClick={() => setIsCartOpen(true)}
               className="p-2 hover:bg-gray-100 rounded-lg transition-colors relative"
               aria-label="Cart"
             >
               <ShoppingCart className="w-6 h-6 text-gray-700" />
-              {/* Badge de cantidad - lo agregaremos después */}
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-green-600 text-white text-xs rounded-full flex items-center justify-center font-medium">
-                0
-              </span>
+              {itemCount > 0 && (
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-green-600 text-white text-xs rounded-full flex items-center justify-center font-medium">
+                  {itemCount}
+                </span>
+              )}
             </button>
           </div>
         </div>
@@ -60,6 +67,13 @@ export default function Header({ locale, siteName = 'Alterna Mostrador' }: Heade
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
         locale={locale}
+      />
+
+      {/* Cart drawer */}
+      <CartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        whatsappNumber={whatsappNumber}
       />
 
       {/* Spacer para el header fijo */}

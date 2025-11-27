@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import ProductsGrid from './ProductsGrid';
 import CategoryFilter from './CategoryFilter';
 import SearchBar from './SearchBar';
+import { useCart } from '@/hooks/useCart';
 import type { Product, ProductCategory } from '@/types/strapi';
 
 interface CartaContentProps {
@@ -14,6 +15,7 @@ interface CartaContentProps {
 export default function CartaContent({ products, categories }: CartaContentProps) {
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const { addItem } = useCart();
 
   // Filter products based on category and search
   const filteredProducts = useMemo(() => {
@@ -94,7 +96,7 @@ export default function CartaContent({ products, categories }: CartaContentProps
 
       {/* Products grid */}
       {filteredProducts.length > 0 ? (
-        <ProductsGrid products={filteredProducts} />
+        <ProductsGrid products={filteredProducts} onAddToCart={addItem} />
       ) : (
         <div className="text-center py-12">
           <p className="text-gray-500 text-lg mb-2">
