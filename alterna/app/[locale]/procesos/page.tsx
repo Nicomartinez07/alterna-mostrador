@@ -26,7 +26,7 @@ export default async function ProcesosPage({
       <Section 
         title="Nuestro Proceso Artesanal"
         subtitle="Desde la selección de ingredientes hasta el producto final"
-        className="bg-gradient-to-b from-green-50 to-white"
+        className="bg-gradient-to-b from-white to-green-50"
       >
         <p className="text-center text-gray-600 max-w-3xl mx-auto">
           En Alterna Mostrador, cada producto es elaborado con dedicación y respeto 
@@ -35,7 +35,7 @@ export default async function ProcesosPage({
       </Section>
 
       {/* Process Timeline */}
-      <Section noPadding className="py-12 md:py-16">
+      <Section noPadding className="py-12 md:py-16 bg-gradient-to-b from-green-50 to-white ">
         <div className="max-w-5xl mx-auto px-4">
           <ProcessTimeline steps={processSteps} />
         </div>

@@ -22,7 +22,7 @@ export default async function CartaPage({
       <Section
         title="Nuestra Carta"
         subtitle="Productos frescos y artesanales elaborados con amor"
-        className="bg-gradient-to-b from-green-50 to-white"
+        className="bg-gradient-to-b from-white to-green-50"
       >
         <p className="text-center text-gray-600 max-w-2xl mx-auto">
           Todos nuestros productos son 100% veganos, elaborados diariamente 

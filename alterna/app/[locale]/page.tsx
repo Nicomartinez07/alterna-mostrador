@@ -53,6 +53,7 @@ function HomeContent({
       <Section
         title="Comida vegana artesanal"
         subtitle="Elaborada con amor y los mejores ingredientes de la tierra"
+        className="bg-gray-50"
       >
         <div className="grid md:grid-cols-2 gap-8 text-gray-700">
           <div>

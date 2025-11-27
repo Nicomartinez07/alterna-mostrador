@@ -15,6 +15,17 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
   const imageUrl = product.photo?.url;
   const categoryName = product.category?.name;
 
+  // Función segura para limpiar HTML de la descripción
+  const getCleanDescription = (description: any): string => {
+    if (!description) return '';
+    
+    // Convertir a string si no lo es
+    const descString = String(description);
+    
+    // Eliminar etiquetas HTML si existen
+    return descString.replace(/<[^>]*>/g, '');
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
       {/* Image */}
@@ -25,6 +36,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
           fill
           className="object-cover"
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          unoptimized
         />
         {categoryName && (
           <div className="absolute top-2 left-2">
@@ -43,7 +55,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
         
         {product.description && (
           <p className="text-sm text-gray-600 mb-4 line-clamp-3 flex-1">
-            {product.description.replace(/<[^>]*>/g, '')}
+            {getCleanDescription(product.description)}
           </p>
         )}
 
