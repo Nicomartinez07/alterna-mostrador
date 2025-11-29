@@ -24,7 +24,6 @@ const nextConfig = {
         hostname: 'images.unsplash.com',
       },
     ],
-    dangerouslyAllowPrivateNetworking: true,
   },
 };
 
