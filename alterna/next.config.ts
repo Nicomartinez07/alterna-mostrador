@@ -4,14 +4,19 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'http',
-        hostname: '127.0.0.1',
+        hostname: 'localhost',
         port: '1337',
         pathname: '/uploads/**',
       },
       {
         protocol: 'http',
-        hostname: 'localhost',
+        hostname: '127.0.0.1',
         port: '1337',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'alterna-strapi.onrender.com',
         pathname: '/uploads/**',
       },
       {
@@ -19,6 +24,7 @@ const nextConfig = {
         hostname: 'images.unsplash.com',
       },
     ],
+    dangerouslyAllowPrivateNetworking: true,
   },
 };
 

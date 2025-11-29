@@ -2,8 +2,11 @@
 
 import { useState } from 'react';
 import { Send } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function ContactForm() {
+  const t = useTranslations('contactForm');
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,12 +38,12 @@ export default function ContactForm() {
         setTimeout(() => setStatus('idle'), 5000);
       } else {
         setStatus('error');
-        setErrorMessage(data.error || 'Hubo un error al enviar el mensaje');
+        setErrorMessage(data.error || t('error.default'));
         setTimeout(() => setStatus('idle'), 5000);
       }
     } catch (error) {
       setStatus('error');
-      setErrorMessage('Error de conexión. Por favor, intenta nuevamente.');
+      setErrorMessage(t('error.connection'));
       setTimeout(() => setStatus('idle'), 5000);
     }
   };
@@ -58,7 +61,7 @@ export default function ContactForm() {
       {/* Name */}
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-          Nombre *
+          {t('name')} {t('required')}
         </label>
         <input
           type="text"
@@ -67,7 +70,7 @@ export default function ContactForm() {
           value={formData.name}
           onChange={handleInputChange}
           className="w-full px-4 py-3 border border-gray-300 text-black rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
-          placeholder="Tu nombre completo"
+          placeholder={t('namePlaceholder')}
           disabled={status === 'loading'}
         />
       </div>
@@ -75,7 +78,7 @@ export default function ContactForm() {
       {/* Email */}
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-          Email *
+          {t('email')} {t('required')}
         </label>
         <input
           type="email"
@@ -84,7 +87,7 @@ export default function ContactForm() {
           value={formData.email}
           onChange={handleInputChange}
           className="w-full px-4 py-3 border border-gray-300 text-black rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
-          placeholder="tu@email.com"
+          placeholder={t('emailPlaceholder')}
           disabled={status === 'loading'}
         />
       </div>
@@ -92,7 +95,7 @@ export default function ContactForm() {
       {/* Phone */}
       <div>
         <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-          Teléfono
+          {t('phone')}
         </label>
         <input
           type="tel"
@@ -100,7 +103,7 @@ export default function ContactForm() {
           value={formData.phone}
           onChange={handleInputChange}
           className="w-full px-4 py-3 border border-gray-300 text-black rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
-          placeholder="+34 600 000 000"
+          placeholder={t('phonePlaceholder')}
           disabled={status === 'loading'}
         />
       </div>
@@ -108,7 +111,7 @@ export default function ContactForm() {
       {/* Message */}
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-          Mensaje *
+          {t('message')} {t('required')}
         </label>
         <textarea
           id="message"
@@ -117,7 +120,7 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleInputChange}
           className="w-full px-4 py-3 border border-gray-300 text-black rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors resize-none"
-          placeholder="Escribe tu mensaje aquí..."
+          placeholder={t('messagePlaceholder')}
           disabled={status === 'loading'}
         />
       </div>
@@ -125,14 +128,14 @@ export default function ContactForm() {
       {/* Status messages */}
       {status === 'success' && (
         <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
-          <strong>¡Mensaje enviado con éxito!</strong>
-          <p className="mt-1">Te hemos enviado un email de confirmación. Te responderemos pronto.</p>
+          <strong>{t('success.title')}</strong>
+          <p className="mt-1">{t('success.description')}</p>
         </div>
       )}
 
       {status === 'error' && (
         <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
-          <strong>Error al enviar el mensaje</strong>
+          <strong>{t('error.title')}</strong>
           <p className="mt-1">{errorMessage}</p>
         </div>
       )}
@@ -146,12 +149,12 @@ export default function ContactForm() {
         {status === 'loading' ? (
           <>
             <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
-            Enviando...
+            {t('sending')}
           </>
         ) : (
           <>
             <Send className="w-6 h-6" />
-            Enviar mensaje
+            {t('submit')}
           </>
         )}
       </button>

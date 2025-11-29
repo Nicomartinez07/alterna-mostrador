@@ -1,19 +1,22 @@
 import MarketCard from './MarketCard';
 import type { MarketItem } from '@/types/strapi';
+import { useTranslations } from 'next-intl';
 
 interface MarketGridProps {
   items: MarketItem[];
 }
 
 export default function MarketGrid({ items }: MarketGridProps) {
+  const t = useTranslations('marketGrid');
+
   if (items.length === 0) {
     return (
       <div className="text-center py-16 bg-white rounded-lg shadow-sm">
         <p className="text-gray-500 text-lg mb-2">
-          No hay productos disponibles esta semana
+          {t('emptyTitle')}
         </p>
         <p className="text-gray-400 text-sm">
-          Vuelve pronto para ver nuevos productos de nuestros colaboradores
+          {t('emptyDescription')}
         </p>
       </div>
     );

@@ -29,7 +29,7 @@ export default async function LocaleLayout({
 
   // getMessages lee automáticamente el locale del request context configurado en i18n.ts
   const messages = await getMessages();
-  const settings = await getSiteSettings();
+  const settings = await getSiteSettings(locale);
 
   return (
     <html lang={locale}>

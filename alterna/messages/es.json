@@ -15,8 +15,22 @@
     "error": "Error"
   },
   "home": {
+    "welcome": "Bienvenido a Alterna Mostrador",
     "hero_cta": "Ver carta",
-    "welcome": "Bienvenidos"
+
+    "intro_title": "Comida vegana artesanal",
+    "intro_subtitle": "Elaborada con amor y los mejores ingredientes de la tierra",
+
+    "intro_p1": "En Alterna Mostrador creemos que la comida vegana puede ser deliciosa, nutritiva y sostenible. Cada día preparamos nuestros productos de forma artesanal, con ingredientes frescos y de proximidad.",
+    "intro_p2": "Desde empanadas hasta panes de masa madre, cada bocado está pensado para nutrir tu cuerpo y respetar el planeta. Te invitamos a descubrir nuestros sabores y a formar parte de esta alternativa consciente.",
+
+    "cta_title": "¿Listo para probar?",
+    "cta_subtitle": "Visítanos en nuestro local o haz tu pedido para llevar",
+    "cta_btn_menu": "Ver carta",
+    "cta_btn_contact": "Cómo llegar",
+
+    "metaTitle": "Inicio",
+    "metaDescription": "Comida vegana artesanal en Barcelona. Productos frescos, elaborados con amor y los mejores ingredientes."
   },
   "cart": {
     "title": "Carrito",
@@ -31,13 +45,130 @@
     "contact_us": "Contáctanos",
     "rights": "Todos los derechos reservados"
   },
-  "market": {
+   "market": {
     "title": "Mercado Semanal",
-    "subtitle": "Productos de colaboradores locales",
-    "no_items": "No hay productos disponibles",
-    "contact_vendor": "Contactar vendedor",
-    "available_from": "Disponible desde",
-    "available_until": "Disponible hasta",
-    "vendor": "Vendedor"
+    "subtitle": "Productos seleccionados de nuestros colaboradores",
+    "description": "Cada semana traemos productos artesanales de pequeños productores locales. Apoyá el comercio justo y conocé directamente a quienes elaboran estos productos.",
+    
+    "info": {
+      "weeklyProducts": {
+        "title": "Productos semanales",
+        "description": "Nuevos productos cada semana. Consulta disponibilidad."
+      },
+      "directContact": {
+        "title": "Contacto directo", 
+        "description": "Habla directamente con los productores por WhatsApp o Instagram."
+      }
+    },
+    
+    "cta": {
+      "title": "¿Sos productor local?",
+      "description": "Si elaborás productos artesanales y querés formar parte de nuestro mercado semanal, contactanos.",
+      "button": "Contactar por WhatsApp"
+    }
+  },
+  "takeaway": {
+    "title": "Pedí para llevar",
+    "subtitle": "Disfrutá nuestros productos desde casa o la oficina",
+    "description": "Realizá tu pedido fácilmente a través de nuestras plataformas de delivery o directamente por WhatsApp para retiro en el local.",
+    
+    "deliveryPlatforms": "Plataformas de Delivery",
+    "glovo": {
+      "title": "Glovo",
+      "description": "Delivery rápido en menos de 30 minutos",
+      "button": "Pedir ahora",
+      "comingSoon": "Próximamente disponible"
+    },
+    "uberEats": {
+      "title": "Uber Eats", 
+      "description": "Pedí por la app y recibilo en tu puerta",
+      "button": "Pedir ahora",
+      "comingSoon": "Próximamente disponible"
+    },
+    
+    "whatsapp": {
+      "title": "O pedí por WhatsApp",
+      "description": "Contactanos directamente para hacer tu pedido y retirarlo en el local. Sin comisiones, directo con nosotros.",
+      "button": "Pedir por WhatsApp"
+    }
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "Estamos aquí para ayudarte",
+    "description": "¿Tenés dudas, consultas o querés hacer una sugerencia? Escribinos y te responderemos lo antes posible.",
+    
+    "address": "Dirección",
+    "phone": "Teléfono", 
+    "email": "Email",
+    "instagram": "Instagram",
+    "schedule": "Horarios",
+    
+    "form": {
+      "title": "Envíanos un mensaje"
+    }
+  },
+  "contactForm": {
+    "name": "Nombre completo",
+    "namePlaceholder": "Tu nombre completo",
+    "email": "Email",
+    "emailPlaceholder": "tu@email.com",
+    "phone": "Teléfono", 
+    "phonePlaceholder": "+34 600 000 000",
+    "message": "Mensaje",
+    "messagePlaceholder": "Escribe tu mensaje aquí...",
+    "required": "*",
+    "submit": "Enviar mensaje",
+    "sending": "Enviando...",
+    "success": {
+      "title": "¡Mensaje enviado con éxito!",
+      "description": "Te hemos enviado un email de confirmación. Te responderemos pronto."
+    },
+    "error": {
+      "title": "Error al enviar el mensaje",
+      "default": "Hubo un error al enviar el mensaje",
+      "connection": "Error de conexión. Por favor, intenta nuevamente."
+    }
+  },
+  "marketGrid": {
+    "emptyTitle": "No hi ha productes disponibles aquesta setmana",
+    "emptyDescription": "Torna aviat per veure nous productes dels nostres col·laboradors"
+  },
+  "marketCard": {
+    "vendor": "Venedor",
+    "contactWhatsapp": "Contactar amb {vendor} per WhatsApp",
+    "viewInstagram": "Veure Instagram de {vendor}",
+    "availableFrom": "Disponible des de {date}",
+    "availableTo": "Disponible fins a {date}",
+    "availableRange": "Disponible del {from} al {to}"
+  },
+  "procesos": {
+    "title": "Nuestro Proceso Artesanal",
+    "subtitle": "Desde la selección de ingredientes hasta el producto final",
+    "description": "En Alterna Mostrador, cada producto es elaborado con dedicación y respeto por los ingredientes. Conocé nuestro proceso de principio a fin.",
+
+    "featuredProductsTitle": "Productos Destacados",
+    "featuredProductsSubtitle": "Algunos de nuestros favoritos",
+
+    "emptyProducts": "No hay productos disponibles",
+
+    "metaTitle": "Procesos Artesanales",
+    "metaDescription": "Conoce nuestro proceso de elaboración artesanal, desde la selección de ingredientes hasta el producto final."
+  },
+  "carta": {
+    "title": "Nuestra Carta",
+    "subtitle": "Productos frescos y artesanales elaborados con amor",
+    "description": "Todos nuestros productos son 100% veganos, elaborados diariamente con ingredientes frescos y de temporada.",
+
+    "metaTitle": "Carta",
+    "metaDescription": "Descubre nuestra carta de productos veganos artesanales: empanadas, panes, postres y más.",
+    "searchPlaceholder": "Buscar por nombre, ingredientes...",
+    "filterByCategory": "Filtrar por categoría",
+    "showing": "Mostrando",
+    "of": "de",
+    "products": "productos",
+    "clearFilters": "Limpiar filtros",
+    "noResultsTitle": "No se encontraron productos",
+    "noResultsSubtitle": "Intenta cambiar los filtros o la búsqueda"
   }
+
 }

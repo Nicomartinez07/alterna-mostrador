@@ -15,8 +15,22 @@
     "error": "Error"
   },
   "home": {
+    "welcome": "Welcome to Alterna Mostrador",
     "hero_cta": "View menu",
-    "welcome": "Welcome"
+
+    "intro_title": "Artisanal vegan food",
+    "intro_subtitle": "Made with love and the best ingredients from the earth",
+
+    "intro_p1": "At Alterna Mostrador we believe vegan food can be delicious, nutritious, and sustainable. Every day we prepare our products by hand, using fresh and local ingredients.",
+    "intro_p2": "From empanadas to sourdough bread, every bite is crafted to nourish your body and respect the planet. We invite you to discover our flavors and join this conscious alternative.",
+
+    "cta_title": "Ready to try?",
+    "cta_subtitle": "Visit us at our store or place your takeaway order",
+    "cta_btn_menu": "View menu",
+    "cta_btn_contact": "How to get here",
+
+    "metaTitle": "Home",
+    "metaDescription": "Artisanal vegan food in Barcelona. Fresh products made with love and the best ingredients."
   },
   "cart": {
     "title": "Cart",
@@ -30,5 +44,131 @@
     "follow_us": "Follow us",
     "contact_us": "Contact us",
     "rights": "All rights reserved"
+  },
+  "takeaway": {
+    "title": "Order Take Away",
+    "subtitle": "Enjoy our products from home or office", 
+    "description": "Place your order easily through our delivery platforms or directly via WhatsApp for pickup.",
+    
+    "deliveryPlatforms": "Delivery Platforms",
+    "glovo": {
+      "title": "Glovo",
+      "description": "Fast delivery in less than 30 minutes",
+      "button": "Order now",
+      "comingSoon": "Coming soon"
+    },
+    "uberEats": {
+      "title": "Uber Eats",
+      "description": "Order through the app and receive it at your door", 
+      "button": "Order now",
+      "comingSoon": "Coming soon"
+    },
+    
+    "whatsapp": {
+      "title": "Or order via WhatsApp",
+      "description": "Contact us directly to place your order and pick it up at the store. No commissions, directly with us.",
+      "button": "Order via WhatsApp"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to help you",
+    "description": "Do you have questions, inquiries or want to make a suggestion? Write to us and we'll respond as soon as possible.",
+    
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email", 
+    "instagram": "Instagram",
+    "schedule": "Opening Hours",
+    
+    "form": {
+      "title": "Send us a message"
+    }
+  },
+  "contactForm": {
+    "name": "Full name",
+    "namePlaceholder": "Your full name", 
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "phone": "Phone",
+    "phonePlaceholder": "+34 600 000 000", 
+    "message": "Message",
+    "messagePlaceholder": "Write your message here...",
+    "required": "*",
+    "submit": "Send message",
+    "sending": "Sending...",
+    "success": {
+      "title": "Message sent successfully!",
+      "description": "We've sent you a confirmation email. We'll get back to you soon."
+    },
+    "error": {
+      "title": "Error sending message",
+      "default": "There was an error sending the message",
+      "connection": "Connection error. Please try again."
+    }
+  },
+  "market": {
+    "title": "Weekly Market", 
+    "subtitle": "Selected products from our collaborators",
+    "description": "Every week we bring artisanal products from small local producers. Support fair trade and get to know directly who makes these products.",
+    
+    "info": {
+      "weeklyProducts": {
+        "title": "Weekly products",
+        "description": "New products every week. Check availability."
+      },
+      "directContact": {
+        "title": "Direct contact",
+        "description": "Talk directly with producers via WhatsApp or Instagram."
+      }
+    },
+    
+    "cta": {
+      "title": "Are you a local producer?",
+      "description": "If you make artisanal products and want to be part of our weekly market, contact us.",
+      "button": "Contact via WhatsApp"
+    }
+  },
+  "marketGrid": {
+    "emptyTitle": "No products available this week",
+    "emptyDescription": "Come back soon to see new products from our collaborators"
+  },
+  "marketCard": {
+    "vendor": "Vendor",
+    "contactWhatsapp": "Contact {vendor} via WhatsApp",
+    "viewInstagram": "View {vendor}'s Instagram",
+    "availableFrom": "Available from {date}",
+    "availableTo": "Available until {date}",
+    "availableRange": "Available from {from} to {to}"
+  },
+  "procesos": {
+    "title": "Our Artisanal Process",
+    "subtitle": "From ingredient selection to the final product",
+    "description": "At Alterna Mostrador, every product is crafted with dedication and respect for the ingredients. Learn about our process from start to finish.",
+
+    "featuredProductsTitle": "Featured Products",
+    "featuredProductsSubtitle": "Some of our favorites",
+
+    "emptyProducts": "No products available",
+
+    "metaTitle": "Artisanal Processes",
+    "metaDescription": "Discover our artisanal production process, from ingredient selection to the final product."
+  },
+  "carta": {
+    "title": "Our Menu",
+    "subtitle": "Fresh and artisanal products made with love",
+    "description": "All our products are 100% vegan, prepared daily with fresh and seasonal ingredients.",
+
+    "metaTitle": "Menu",
+    "metaDescription": "Discover our menu of artisanal vegan products: empanadas, breads, desserts, and more.",
+    "searchPlaceholder": "Search by name, ingredients...",
+    "filterByCategory": "Filter by category",
+    "showing": "Showing",
+    "of": "of",
+    "products": "products",
+    "clearFilters": "Clear filters",
+    "noResultsTitle": "No products found",
+    "noResultsSubtitle": "Try adjusting your filters or search"
   }
+  
 }

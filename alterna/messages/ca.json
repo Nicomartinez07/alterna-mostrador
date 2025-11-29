@@ -15,8 +15,22 @@
     "error": "Error"
   },
   "home": {
+    "welcome": "Benvingut a Alterna Mostrador",
     "hero_cta": "Veure carta",
-    "welcome": "Benvinguts"
+
+    "intro_title": "Menjar vegà artesanal",
+    "intro_subtitle": "Elaborada amb amor i els millors ingredients de la terra",
+
+    "intro_p1": "A Alterna Mostrador creiem que el menjar vegà pot ser deliciós, nutritiu i sostenible. Cada dia preparem els nostres productes de manera artesanal, amb ingredients frescos i de proximitat.",
+    "intro_p2": "Des d'empanades fins a pans de massa mare, cada mos és pensat per nodrir el teu cos i respectar el planeta. T'invitem a descobrir els nostres sabors i formar part d’aquesta alternativa conscient.",
+
+    "cta_title": "A punt per tastar?",
+    "cta_subtitle": "Vine al nostre local o fes la teva comanda per emportar",
+    "cta_btn_menu": "Veure carta",
+    "cta_btn_contact": "Com arribar",
+
+    "metaTitle": "Inici",
+    "metaDescription": "Menjar vegà artesanal a Barcelona. Productes frescos, elaborats amb amor i els millors ingredients."
   },
   "cart": {
     "title": "Cistella",
@@ -30,5 +44,130 @@
     "follow_us": "Segueix-nos",
     "contact_us": "Contacta'ns",
     "rights": "Tots els drets reservats"
+  },
+  "takeaway": {
+    "title": "Demanar per emportar",
+    "subtitle": "Gaudiu dels nostres productes a casa o a la oficina",
+    "description": "Feu la vostra comanda fàcilment a través de les nostres plataformes de delivery o directament per WhatsApp per a recollir.",
+    
+    "deliveryPlatforms": "Plataformes de Delivery",
+    "glovo": {
+      "title": "Glovo",
+      "description": "Lliurament ràpid en menys de 30 minuts",
+      "button": "Demanar ara",
+      "comingSoon": "Properament disponible"
+    },
+    "uberEats": {
+      "title": "Uber Eats",
+      "description": "Demanar per l'app i rebre a casa",
+      "button": "Demanar ara", 
+      "comingSoon": "Properament disponible"
+    },
+    
+    "whatsapp": {
+      "title": "O demanar per WhatsApp",
+      "description": "Posi's en contacte directament amb nosaltres per fer la seva comanda i recollir-la al local. Sense comissions, directament amb nosaltres.",
+      "button": "Demanar per WhatsApp"
+    }
+  },
+  "contact": {
+    "title": "Contacta'ns",
+    "subtitle": "Estem aquí per ajudar-te",
+    "description": "Tens dubtes, consultes o vols fer una suggerència? Escriu-nos i et respondrem el més aviat possible.",
+    
+    "address": "Adreça",
+    "phone": "Telèfon",
+    "email": "Email",
+    "instagram": "Instagram", 
+    "schedule": "Horaris",
+    
+    "form": {
+      "title": "Envia'ns un missatge"
+    }
+  },
+  "contactForm": {
+    "name": "Nom complet",
+    "namePlaceholder": "El teu nom complet",
+    "email": "Email",
+    "emailPlaceholder": "el_teu@email.com",
+    "phone": "Telèfon",
+    "phonePlaceholder": "+34 600 000 000",
+    "message": "Missatge", 
+    "messagePlaceholder": "Escriu el teu missatge aquí...",
+    "required": "*",
+    "submit": "Enviar missatge",
+    "sending": "Enviant...",
+    "success": {
+      "title": "Missatge enviat amb èxit!",
+      "description": "T'hem enviat un email de confirmació. Et respondrem aviat."
+    },
+    "error": {
+      "title": "Error en enviar el missatge", 
+      "default": "Hi ha hagut un error en enviar el missatge",
+      "connection": "Error de connexió. Si us plau, torna a intentar-ho."
+    }
+  },
+  "market": {
+    "title": "Mercat Setmanal",
+    "subtitle": "Productes seleccionats dels nostres col·laboradors",
+    "description": "Cada setmana portem productes artesans de petits productors locals. Dona suport al comerç just i coneix directament qui elabora aquests productes.",
+    
+    "info": {
+      "weeklyProducts": {
+        "title": "Productes setmanals",
+        "description": "Nous productes cada setmana. Consulta disponibilitat."
+      },
+      "directContact": {
+        "title": "Contacte directe",
+        "description": "Parla directament amb els productors per WhatsApp o Instagram."
+      }
+    },
+    
+    "cta": {
+      "title": "Ets productor local?",
+      "description": "Si elabora productes artesans i vols formar part del nostre mercat setmanal, contacta'ns.",
+      "button": "Contactar per WhatsApp"
+    }
+  },
+  "marketGrid": {
+    "emptyTitle": "No hay productos disponibles esta semana",
+    "emptyDescription": "Vuelve pronto para ver nuevos productos de nuestros colaboradores"
+  },
+  "marketCard": {
+    "vendor": "Venedor",
+    "contactWhatsapp": "Contactar a {vendor} por WhatsApp",
+    "viewInstagram": "Ver Instagram de {vendor}",
+    "availableFrom": "Disponible desde {date}",
+    "availableTo": "Disponible hasta {date}",
+    "availableRange": "Disponible del {from} al {to}"
+  },
+  "procesos": {
+    "title": "El Nostre Procés Artesanal",
+    "subtitle": "Des de la selecció d'ingredients fins al producte final",
+    "description": "A Alterna Mostrador, cada producte s'elabora amb dedicació i respecte pels ingredients. Coneix el nostre procés de principi a fi.",
+
+    "featuredProductsTitle": "Productes Destacats",
+    "featuredProductsSubtitle": "Alguns dels nostres preferits",
+
+    "emptyProducts": "No hi ha productes disponibles",
+
+    "metaTitle": "Processos Artesanals",
+    "metaDescription": "Coneix el nostre procés d'elaboració artesanal, des de la selecció d'ingredients fins al producte final."
+  },
+  "carta": {
+    "title": "La Nostra Carta",
+    "subtitle": "Productes frescos i artesanals elaborats amb amor",
+    "description": "Tots els nostres productes són 100% vegans, elaborats diàriament amb ingredients frescos i de temporada.",
+
+    "metaTitle": "Carta",
+    "metaDescription": "Descobreix la nostra carta de productes vegans artesanals: empanades, pans, postres i més.",
+    "searchPlaceholder": "Cercar per nom, ingredients...",
+    "filterByCategory": "Filtrar per categoria",
+    "showing": "Mostrant",
+    "of": "de",
+    "products": "productes",
+    "clearFilters": "Netejar filtres",
+    "noResultsTitle": "No s'han trobat productes",
+    "noResultsSubtitle": "Intenta canviar els filtres o la cerca"
   }
 }

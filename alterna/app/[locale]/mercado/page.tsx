@@ -1,4 +1,4 @@
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import Section from '@/components/ui/Section';
 import MarketGrid from '@/components/market/MarketGrid';
 import { getMarketItems, getSiteSettings } from '@/lib/strapi';
@@ -12,15 +12,15 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'market' });
   
   return generatePageMetadata({
-    title: 'Mercado Semanal',
-    description: 'Productos artesanales de pequeños productores locales. Apoya el comercio justo y conoce a los productores.',
+    title: t('title'),
+    description: t('description'),
     locale,
     path: '/mercado',
   });
 }
-
 
 export default async function MercadoPage({
   params,
@@ -30,22 +30,24 @@ export default async function MercadoPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
+  // Obtener las traducciones
+  const t = await getTranslations('market');
+
   const [marketItems, settings] = await Promise.all([
     getMarketItems(locale),
-    getSiteSettings(),
+    getSiteSettings(locale), // ← Pasar el locale aquí también
   ]);
 
   return (
     <>
       {/* Hero section */}
       <Section
-        title="Mercado Semanal"
-        subtitle="Productos seleccionados de nuestros colaboradores"
+        title={t('title')}
+        subtitle={t('subtitle')}
         className="bg-gradient-to-b from-amber-50 to-gray-50"
       >
         <p className="text-center text-gray-600 max-w-3xl mx-auto mb-8">
-          Cada semana traemos productos artesanales de pequeños productores locales. 
-          Apoyá el comercio justo y conocé directamente a quienes elaboran estos productos.
+          {t('description')}
         </p>
 
         {/* Info cards */}
@@ -56,10 +58,10 @@ export default async function MercadoPage({
             </div>
             <div>
               <h3 className="font-semibold text-gray-900 mb-1">
-                Productos semanales
+                {t('info.weeklyProducts.title')}
               </h3>
               <p className="text-sm text-gray-600">
-                Nuevos productos cada semana. Consulta disponibilidad.
+                {t('info.weeklyProducts.description')}
               </p>
             </div>
           </div>
@@ -70,10 +72,10 @@ export default async function MercadoPage({
             </div>
             <div>
               <h3 className="font-semibold text-gray-900 mb-1">
-                Contacto directo
+                {t('info.directContact.title')}
               </h3>
               <p className="text-sm text-gray-600">
-                Habla directamente con los productores por WhatsApp o Instagram.
+                {t('info.directContact.description')}
               </p>
             </div>
           </div>
@@ -92,11 +94,10 @@ export default async function MercadoPage({
         <Section className="bg-gray-50">
           <div className="text-center max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              ¿Sos productor local?
+              {t('cta.title')}
             </h3>
             <p className="text-gray-600 mb-6">
-              Si elaborás productos artesanales y querés formar parte de nuestro 
-              mercado semanal, contactanos.
+              {t('cta.description')}
             </p>
             {settings?.whatsapp && (
               <a
@@ -105,7 +106,7 @@ export default async function MercadoPage({
                 rel="noopener noreferrer"
                 className="inline-block px-8 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
               >
-                Contactar por WhatsApp
+                {t('cta.button')}
               </a>
             )}
           </div>

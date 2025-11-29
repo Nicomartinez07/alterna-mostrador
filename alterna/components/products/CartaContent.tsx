@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 import ProductsGrid from './ProductsGrid';
 import CategoryFilter from './CategoryFilter';
 import SearchBar from './SearchBar';
@@ -13,6 +14,8 @@ interface CartaContentProps {
 }
 
 export default function CartaContent({ products, categories }: CartaContentProps) {
+  const t = useTranslations('carta');
+
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const { addItem } = useCart();
@@ -24,9 +27,7 @@ export default function CartaContent({ products, categories }: CartaContentProps
     // Filter by category
     if (selectedCategory !== null) {
       filtered = filtered.filter((product) => {
-        // CORRECCIÓN 1: Usamos product_category tal como viene de Strapi
-        // Si TypeScript se queja aquí, actualiza tu interfaz Product para usar product_category en vez de category
-        // @ts-ignore 
+        // @ts-ignore - depende del naming en Strapi
         return product.product_category?.id === selectedCategory;
       });
     }
@@ -35,12 +36,9 @@ export default function CartaContent({ products, categories }: CartaContentProps
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter((product) => {
-        // CORRECCIÓN 2: Validamos que los campos existan antes de aplicar toLowerCase
-        // Usamos (valor || '') para convertir null a string vacío
         const titleMatch = (product.title || '').toLowerCase().includes(query);
         const descMatch = (product.description || '').toLowerCase().includes(query);
         const ingMatch = (product.ingredients || '').toLowerCase().includes(query);
-
         return titleMatch || descMatch || ingMatch;
       });
     }
@@ -52,19 +50,20 @@ export default function CartaContent({ products, categories }: CartaContentProps
     <div className="space-y-8">
       {/* Filters section */}
       <div className="bg-white rounded-lg shadow-sm p-6 space-y-6">
+
         {/* Search bar */}
         <div>
           <SearchBar
             value={searchQuery}
             onChange={setSearchQuery}
-            placeholder="Buscar por nombre, ingredientes..."
+            placeholder={t('searchPlaceholder')}
           />
         </div>
 
         {/* Category filters */}
         <div>
           <h3 className="text-sm font-semibold text-gray-700 mb-3">
-            Filtrar por categoría
+            {t('filterByCategory')}
           </h3>
           <CategoryFilter
             categories={categories}
@@ -78,11 +77,13 @@ export default function CartaContent({ products, categories }: CartaContentProps
       <div className="flex items-center justify-between">
         <p className="text-sm text-gray-600">
           {filteredProducts.length === products.length ? (
-            <span>Mostrando <strong>{products.length}</strong> productos</span>
+            <span>
+              {t('showing')} <strong>{products.length}</strong> {t('products')}
+            </span>
           ) : (
             <span>
-              Mostrando <strong>{filteredProducts.length}</strong> de{' '}
-              <strong>{products.length}</strong> productos
+              {t('showing')} <strong>{filteredProducts.length}</strong> {t('of')}{' '}
+              <strong>{products.length}</strong> {t('products')}
             </span>
           )}
         </p>
@@ -95,7 +96,7 @@ export default function CartaContent({ products, categories }: CartaContentProps
             }}
             className="text-sm text-green-600 hover:text-green-700 font-medium"
           >
-            Limpiar filtros
+            {t('clearFilters')}
           </button>
         )}
       </div>
@@ -106,10 +107,10 @@ export default function CartaContent({ products, categories }: CartaContentProps
       ) : (
         <div className="text-center py-12">
           <p className="text-gray-500 text-lg mb-2">
-            No se encontraron productos
+            {t('noResultsTitle')}
           </p>
           <p className="text-gray-400 text-sm">
-            Intenta cambiar los filtros o la búsqueda
+            {t('noResultsSubtitle')}
           </p>
         </div>
       )}

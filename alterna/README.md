@@ -39,9 +39,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 
 Cosas para revisar:
-
-Descripcion o ingredientes en carta 
+ 
 Carrito lento o no dinamico
 Seccion info Adicional: consultar si lo quieren o si no
-Por cada producto abrir una tarjeta o una pagina dinamica que me traiga toda la info 
-Cambiar todo el idioma de la pagina como mierda se hace.
+Por cada producto abrir una tarjeta o una pagina dinamica que me traiga toda la info.

@@ -44,13 +44,38 @@ async function fetchStrapi(endpoint: string): Promise<any> {
 }
 
 /**
- * Get site settings (single type)
+ * Get site settings with proper locale support
  */
-export async function getSiteSettings(): Promise<SiteSettings | null> {
+export async function getSiteSettings(locale: string = 'es'): Promise<SiteSettings | null> {
   try {
-    const data = await fetchStrapi(`/site-setting?populate=*`);
-    // Data viene así: { data: { id: 2, nombre_local: ... } }
-    return data.data || null;
+    // Forzar el locale en la query - forma correcta para Strapi v4
+    const data = await fetchStrapi(`/site-setting?populate=*&locale=${locale}`);
+    
+    // Si encontramos datos para el locale solicitado
+    if (data.data) {
+      return data.data;
+    }
+    
+
+    const defaultData = await fetchStrapi(`/site-setting?populate=*`);
+    
+    if (!defaultData.data) {
+      return null;
+    }
+    
+    // Buscar en las localizaciones si existe una para el locale solicitado
+    if (defaultData.data.localizations && defaultData.data.localizations.length > 0) {
+      const localizedVersion = defaultData.data.localizations.find(
+        (loc: any) => loc.locale === locale
+      );
+      
+      if (localizedVersion) {
+        return localizedVersion;
+      }
+    }
+    
+    return defaultData.data;
+    
   } catch (error) {
     console.error('Error fetching site settings:', error);
     return null;

@@ -2,12 +2,14 @@ import Image from 'next/image';
 import { Instagram, Phone } from 'lucide-react';
 import { getStrapiImageUrl } from '@/lib/strapi';
 import type { MarketItem } from '@/types/strapi';
+import { useTranslations } from 'next-intl';
 
 interface MarketCardProps {
   item: MarketItem;
 }
 
 export default function MarketCard({ item }: MarketCardProps) {
+  const t = useTranslations('marketCard');
   const imageUrl = item.photo?.url;
   
   // Format WhatsApp number (remove non-digits)
@@ -21,6 +23,25 @@ export default function MarketCard({ item }: MarketCardProps) {
   const instagramLink = instagramHandle
     ? `https://instagram.com/${instagramHandle}`
     : null;
+
+  // Format dates based on locale
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString(); // Usará el locale del navegador
+  };
+
+  const getAvailabilityText = () => {
+    if (item.available_from && item.available_to) {
+      return t('availableRange', {
+        from: formatDate(item.available_from),
+        to: formatDate(item.available_to)
+      });
+    } else if (item.available_from) {
+      return t('availableFrom', { date: formatDate(item.available_from) });
+    } else if (item.available_to) {
+      return t('availableTo', { date: formatDate(item.available_to) });
+    }
+    return null;
+  };
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
@@ -59,7 +80,7 @@ export default function MarketCard({ item }: MarketCardProps) {
         {/* Vendor section */}
         <div className="mt-auto pt-4 border-t border-gray-100">
           <p className="text-xs font-semibold text-gray-500 uppercase mb-2">
-            Vendedor
+            {t('vendor')}
           </p>
           <div className="flex items-center justify-between">
             <p className="font-semibold text-gray-900">{item.vendor_name}</p>
@@ -72,7 +93,7 @@ export default function MarketCard({ item }: MarketCardProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-green-100 text-green-600 rounded-lg hover:bg-green-200 transition-colors"
-                  aria-label={`Contactar a ${item.vendor_name} por WhatsApp`}
+                  aria-label={t('contactWhatsapp', { vendor: item.vendor_name })}
                 >
                   <Phone className="w-4 h-4" />
                 </a>
@@ -84,7 +105,7 @@ export default function MarketCard({ item }: MarketCardProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-pink-100 text-pink-600 rounded-lg hover:bg-pink-200 transition-colors"
-                  aria-label={`Ver Instagram de ${item.vendor_name}`}
+                  aria-label={t('viewInstagram', { vendor: item.vendor_name })}
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
@@ -97,16 +118,7 @@ export default function MarketCard({ item }: MarketCardProps) {
         {(item.available_from || item.available_to) && (
           <div className="mt-3 pt-3 border-t border-gray-100">
             <p className="text-xs text-gray-500">
-              {item.available_from && item.available_to ? (
-                <>
-                  Disponible del {new Date(item.available_from).toLocaleDateString('es-ES')} 
-                  {' '}al {new Date(item.available_to).toLocaleDateString('es-ES')}
-                </>
-              ) : item.available_from ? (
-                <>Disponible desde {new Date(item.available_from).toLocaleDateString('es-ES')}</>
-              ) : (
-                <>Disponible hasta {new Date(item.available_to!).toLocaleDateString('es-ES')}</>
-              )}
+              {getAvailabilityText()}
             </p>
           </div>
         )}

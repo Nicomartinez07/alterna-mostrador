@@ -1,4 +1,4 @@
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Section from '@/components/ui/Section';
 import CartaContent from '@/components/products/CartaContent';
 import { getProducts, getProductCategories } from '@/lib/strapi';
@@ -11,10 +11,11 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  
+  const t = await getTranslations({ locale, namespace: 'carta' });
+
   return generatePageMetadata({
-    title: 'Carta',
-    description: 'Descubre nuestra carta de productos veganos artesanales: empanadas, panes, postres y más.',
+    title: t('metaTitle'),
+    description: t('metaDescription'),
     locale,
     path: '/carta',
   });
@@ -28,6 +29,8 @@ export default async function CartaPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
+  const t = await getTranslations('carta');
+
   const [products, categories] = await Promise.all([
     getProducts(locale),
     getProductCategories(locale),
@@ -37,13 +40,12 @@ export default async function CartaPage({
     <>
       {/* Hero section */}
       <Section
-        title="Nuestra Carta"
-        subtitle="Productos frescos y artesanales elaborados con amor"
+        title={t('title')}
+        subtitle={t('subtitle')}
         className="bg-gradient-to-b from-white to-green-50"
       >
         <p className="text-center text-gray-600 max-w-2xl mx-auto">
-          Todos nuestros productos son 100% veganos, elaborados diariamente 
-          con ingredientes frescos y de temporada.
+          {t('description')}
         </p>
       </Section>
 

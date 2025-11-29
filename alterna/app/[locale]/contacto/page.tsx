@@ -1,4 +1,4 @@
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import Section from '@/components/ui/Section';
 import ContactForm from '@/components/contact/ContactForm';
 import MapEmbed from '@/components/contact/MapEmbed';
@@ -13,10 +13,11 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'contact' });
   
   return generatePageMetadata({
-    title: 'Contacto',
-    description: 'Contáctanos para consultas, sugerencias o pedidos. Encuentra nuestra ubicación y horarios.',
+    title: t('title'),
+    description: t('description'),
     locale,
     path: '/contacto',
   });
@@ -29,20 +30,22 @@ export default async function ContactoPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  
+  // Obtener las traducciones
+  const t = await getTranslations('contact');
 
-  const settings = await getSiteSettings();
+  const settings = await getSiteSettings(locale); // ← Pasar el locale aquí
 
   return (
     <>
       {/* Hero section */}
       <Section
-        title="Contáctanos"
-        subtitle="Estamos aquí para ayudarte"
+        title={t('title')}
+        subtitle={t('subtitle')}
         className="bg-gradient-to-b from-white to-green-50"
       >
         <p className="text-center text-gray-600 max-w-2xl mx-auto">
-          ¿Tenés dudas, consultas o querés hacer una sugerencia? 
-          Escribinos y te responderemos lo antes posible.
+          {t('description')}
         </p>
       </Section>
 
@@ -61,7 +64,7 @@ export default async function ContactoPage({
                         <MapPin className="w-5 h-5 text-purple-600" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-900 mb-1">Dirección</h3>
+                        <h3 className="font-semibold text-gray-900 mb-1">{t('address')}</h3>
                         <p className="text-sm text-gray-600">{settings.direccion}</p>
                       </div>
                     </div>
@@ -75,7 +78,7 @@ export default async function ContactoPage({
                         <Phone className="w-5 h-5 text-green-600" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-900 mb-1">Teléfono</h3>
+                        <h3 className="font-semibold text-gray-900 mb-1">{t('phone')}</h3>
                         <a 
                           href={`tel:${settings.telefono}`}
                           className="text-sm text-green-600 hover:text-green-700"
@@ -94,7 +97,7 @@ export default async function ContactoPage({
                         <Mail className="w-5 h-5 text-blue-600" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
+                        <h3 className="font-semibold text-gray-900 mb-1">{t('email')}</h3>
                         <a 
                           href={`mailto:${settings.email}`}
                           className="text-sm text-blue-600 hover:text-blue-700 break-all"
@@ -113,7 +116,7 @@ export default async function ContactoPage({
                         <Instagram className="w-5 h-5 text-pink-600" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-900 mb-1">Instagram</h3>
+                        <h3 className="font-semibold text-gray-900 mb-1">{t('instagram')}</h3>
                         <a 
                           href={`https://instagram.com/${settings.instagram.replace('@', '')}`}
                           target="_blank"
@@ -136,7 +139,7 @@ export default async function ContactoPage({
                       <Clock className="w-5 h-5 text-amber-700" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-gray-900 mb-2">Horarios</h3>
+                      <h3 className="font-semibold text-gray-900 mb-2">{t('schedule')}</h3>
                       <div 
                         className="text-sm text-gray-700 prose prose-sm max-w-none"
                         dangerouslySetInnerHTML={{ __html: settings.horarios }}
@@ -149,7 +152,7 @@ export default async function ContactoPage({
               {/* Contact form */}
               <div className="bg-white rounded-lg shadow-md p-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                  Envianos un mensaje
+                  {t('form.title')}
                 </h3>
                 <ContactForm/>
               </div>
