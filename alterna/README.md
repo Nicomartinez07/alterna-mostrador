@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+
+Cosas para revisar:
+
+Descripcion o ingredientes en carta 
+Carrito lento o no dinamico
+Seccion info Adicional: consultar si lo quieren o si no
+Por cada producto abrir una tarjeta o una pagina dinamica que me traiga toda la info 
+Cambiar todo el idioma de la pagina como mierda se hace.

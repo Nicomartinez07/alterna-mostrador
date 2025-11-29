@@ -5,6 +5,23 @@ import Hero from '@/components/ui/Hero';
 import Section from '@/components/ui/Section';
 // 1. Importamos el Link inteligente que configuramos antes
 import { Link } from '@/navigation'; 
+import type { Metadata } from 'next';
+import { generatePageMetadata } from '@/lib/metadata';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  
+  return generatePageMetadata({
+    title: 'Inicio',
+    description: 'Comida vegana artesanal en Barcelona. Productos frescos, elaborados con amor y los mejores ingredientes.',
+    locale,
+    path: '',
+  });
+}
 
 export default async function HomePage({
   params,
@@ -31,12 +48,6 @@ function HomeContent({
   settings: any;
 }) {
   const t = useTranslations('home');
-
-  // Debug: ver estructura de datos
-  console.log('🔍 Settings:', JSON.stringify(settings, null, 2));
-  console.log('🔍 Hero image:', settings?.hero_image);
-
-
   return (
     <>
       {/* Hero Section */}

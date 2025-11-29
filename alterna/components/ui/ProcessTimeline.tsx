@@ -14,9 +14,6 @@ export default function ProcessTimeline({ steps }: ProcessTimelineProps) {
       </div>
     );
   }
-
-  console.log('ProcessTimeline - steps recibidos:', steps);
-
   return (
     <div className="relative">
       {/* Timeline line - hidden on mobile, visible on md+ */}
@@ -31,8 +28,6 @@ export default function ProcessTimeline({ steps }: ProcessTimelineProps) {
           const title = step.title;
           const description = step.description;
           const stepOrder = step.step_order;
-
-          console.log('Processing step:', { title, imageUrl, stepOrder });
 
           return (
             <div

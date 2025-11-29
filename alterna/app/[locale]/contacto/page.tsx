@@ -4,6 +4,23 @@ import ContactForm from '@/components/contact/ContactForm';
 import MapEmbed from '@/components/contact/MapEmbed';
 import { getSiteSettings } from '@/lib/strapi';
 import { MapPin, Phone, Mail, Clock, Instagram } from 'lucide-react';
+import type { Metadata } from 'next';
+import { generatePageMetadata } from '@/lib/metadata';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  
+  return generatePageMetadata({
+    title: 'Contacto',
+    description: 'Contáctanos para consultas, sugerencias o pedidos. Encuentra nuestra ubicación y horarios.',
+    locale,
+    path: '/contacto',
+  });
+}
 
 export default async function ContactoPage({
   params,
@@ -134,7 +151,7 @@ export default async function ContactoPage({
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">
                   Envianos un mensaje
                 </h3>
-                <ContactForm />
+                <ContactForm/>
               </div>
             </div>
 

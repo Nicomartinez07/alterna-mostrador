@@ -23,20 +23,26 @@ export default function CartaContent({ products, categories }: CartaContentProps
 
     // Filter by category
     if (selectedCategory !== null) {
-      filtered = filtered.filter(
-        (product) => product.category?.id === selectedCategory
-      );
+      filtered = filtered.filter((product) => {
+        // CORRECCIÓN 1: Usamos product_category tal como viene de Strapi
+        // Si TypeScript se queja aquí, actualiza tu interfaz Product para usar product_category en vez de category
+        // @ts-ignore 
+        return product.product_category?.id === selectedCategory;
+      });
     }
 
     // Filter by search query
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(
-        (product) =>
-          product.title.toLowerCase().includes(query) ||
-          product.description?.toLowerCase().includes(query) ||
-          product.ingredients?.toLowerCase().includes(query)
-      );
+      filtered = filtered.filter((product) => {
+        // CORRECCIÓN 2: Validamos que los campos existan antes de aplicar toLowerCase
+        // Usamos (valor || '') para convertir null a string vacío
+        const titleMatch = (product.title || '').toLowerCase().includes(query);
+        const descMatch = (product.description || '').toLowerCase().includes(query);
+        const ingMatch = (product.ingredients || '').toLowerCase().includes(query);
+
+        return titleMatch || descMatch || ingMatch;
+      });
     }
 
     return filtered;

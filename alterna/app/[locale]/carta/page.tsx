@@ -2,6 +2,23 @@ import { setRequestLocale } from 'next-intl/server';
 import Section from '@/components/ui/Section';
 import CartaContent from '@/components/products/CartaContent';
 import { getProducts, getProductCategories } from '@/lib/strapi';
+import type { Metadata } from 'next';
+import { generatePageMetadata } from '@/lib/metadata';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  
+  return generatePageMetadata({
+    title: 'Carta',
+    description: 'Descubre nuestra carta de productos veganos artesanales: empanadas, panes, postres y más.',
+    locale,
+    path: '/carta',
+  });
+}
 
 export default async function CartaPage({
   params,

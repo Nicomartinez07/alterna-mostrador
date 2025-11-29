@@ -103,6 +103,7 @@ export interface Product {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  product_category?: ProductCategory;
   category?: {
     id: number;
     documentId: string;

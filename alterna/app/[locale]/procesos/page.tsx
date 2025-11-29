@@ -3,6 +3,23 @@ import Section from '@/components/ui/Section';
 import ProcessTimeline from '@/components/ui/ProcessTimeline';
 import ProductsGrid from '@/components/products/ProductsGrid';
 import { getProcessSteps, getProducts } from '@/lib/strapi';
+import type { Metadata } from 'next';
+import { generatePageMetadata } from '@/lib/metadata';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  
+  return generatePageMetadata({
+    title: 'Procesos Artesanales',
+    description: 'Conoce nuestro proceso de elaboración artesanal, desde la selección de ingredientes hasta el producto final.',
+    locale,
+    path: '/procesos',
+  });
+}
 
 export default async function ProcesosPage({
   params,

@@ -3,6 +3,23 @@ import Section from '@/components/ui/Section';
 import { getSiteSettings } from '@/lib/strapi';
 import { Smartphone, Clock, MapPin } from 'lucide-react';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+import { generatePageMetadata } from '@/lib/metadata';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  
+  return generatePageMetadata({
+    title: 'Take Away',
+    description: 'Pide nuestros productos para llevar a través de Glovo, Uber Eats o directamente por WhatsApp.',
+    locale,
+    path: '/takeaway',
+  });
+}
 
 export default async function TakeawayPage({
   params,
@@ -78,7 +95,7 @@ export default async function TakeawayPage({
                   <Smartphone className="w-10 h-10" />
                 </div>
                 <p className="text-white/90 mb-6">
-                  Seguí tu pedido en tiempo real
+                  Pedi por la app y recibilo en tu puerta
                 </p>
                 <div className="inline-flex items-center gap-2 bg-white text-green-700 px-6 py-3 rounded-full font-semibold group-hover:bg-green-50 transition-colors">
                   Pedir ahora
@@ -130,7 +147,7 @@ export default async function TakeawayPage({
         </div>
       </Section>
 
-      {/* Info adicional */}
+      {/* Info adicional 
       <Section title="Información importante" className='bg-green-50'>
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           <div className="text-center p-6">
@@ -167,6 +184,7 @@ export default async function TakeawayPage({
           </div>
         </div>
       </Section>
+      */}
     </>
   );
 }

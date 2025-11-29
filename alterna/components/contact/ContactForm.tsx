@@ -11,17 +11,23 @@ export default function ContactForm() {
     message: '',
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
+    setErrorMessage('');
 
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify(formData),
       });
+
+      const data = await response.json();
 
       if (response.ok) {
         setStatus('success');
@@ -29,12 +35,22 @@ export default function ContactForm() {
         setTimeout(() => setStatus('idle'), 5000);
       } else {
         setStatus('error');
+        setErrorMessage(data.error || 'Hubo un error al enviar el mensaje');
         setTimeout(() => setStatus('idle'), 5000);
       }
     } catch (error) {
       setStatus('error');
+      setErrorMessage('Error de conexión. Por favor, intenta nuevamente.');
       setTimeout(() => setStatus('idle'), 5000);
     }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
   };
 
   return (
@@ -49,9 +65,10 @@ export default function ContactForm() {
           id="name"
           required
           value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-          placeholder="Tu nombre"
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-gray-300 text-black rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+          placeholder="Tu nombre completo"
+          disabled={status === 'loading'}
         />
       </div>
 
@@ -65,9 +82,10 @@ export default function ContactForm() {
           id="email"
           required
           value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-gray-300 text-black rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
           placeholder="tu@email.com"
+          disabled={status === 'loading'}
         />
       </div>
 
@@ -80,9 +98,10 @@ export default function ContactForm() {
           type="tel"
           id="phone"
           value={formData.phone}
-          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-gray-300 text-black rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
           placeholder="+34 600 000 000"
+          disabled={status === 'loading'}
         />
       </div>
 
@@ -96,22 +115,25 @@ export default function ContactForm() {
           required
           rows={5}
           value={formData.message}
-          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-gray-300 text-black rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors resize-none"
           placeholder="Escribe tu mensaje aquí..."
+          disabled={status === 'loading'}
         />
       </div>
 
       {/* Status messages */}
       {status === 'success' && (
         <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
-          ¡Mensaje enviado con éxito! Te responderemos pronto.
+          <strong>¡Mensaje enviado con éxito!</strong>
+          <p className="mt-1">Te hemos enviado un email de confirmación. Te responderemos pronto.</p>
         </div>
       )}
 
       {status === 'error' && (
         <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
-          Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.
+          <strong>Error al enviar el mensaje</strong>
+          <p className="mt-1">{errorMessage}</p>
         </div>
       )}
 
@@ -119,19 +141,16 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="w-full bg-green-600 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="w-full bg-green-600 text-white font-semibold py-4 px-6 rounded-lg hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-3 text-lg"
       >
         {status === 'loading' ? (
           <>
-            <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
             Enviando...
           </>
         ) : (
           <>
-            <Send className="w-5 h-5" />
+            <Send className="w-6 h-6" />
             Enviar mensaje
           </>
         )}

@@ -3,6 +3,24 @@ import Section from '@/components/ui/Section';
 import MarketGrid from '@/components/market/MarketGrid';
 import { getMarketItems, getSiteSettings } from '@/lib/strapi';
 import { Calendar, Users } from 'lucide-react';
+import type { Metadata } from 'next';
+import { generatePageMetadata } from '@/lib/metadata';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  
+  return generatePageMetadata({
+    title: 'Mercado Semanal',
+    description: 'Productos artesanales de pequeños productores locales. Apoya el comercio justo y conoce a los productores.',
+    locale,
+    path: '/mercado',
+  });
+}
+
 
 export default async function MercadoPage({
   params,

@@ -30,6 +30,11 @@ export default function LanguageSwitcher({ currentLocale }: LanguageSwitcherProp
     });
   };
 
+  const safeCurrentLocale = routing.locales.includes(currentLocale as any)
+  ? (currentLocale as Locale)
+  : 'es';
+
+
   return (
     <div className="relative group">
       <button 
@@ -37,8 +42,7 @@ export default function LanguageSwitcher({ currentLocale }: LanguageSwitcherProp
         disabled={isPending}
       >
         <Earth className="w-4 h-4" />
-        {/* Asegúrate de que currentLocale sea válido o usa un fallback visual */}
-        <span>{localeNames[currentLocale] || currentLocale.toUpperCase()}</span>
+        <span>{localeNames[safeCurrentLocale]}</span>
       </button>
 
       <div className="absolute right-0 mt-1 w-24 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">

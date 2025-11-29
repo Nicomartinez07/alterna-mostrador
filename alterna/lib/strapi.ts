@@ -16,9 +16,6 @@ const STRAPI_TOKEN = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
  */
 async function fetchStrapi(endpoint: string): Promise<any> {
   const url = `${STRAPI_URL}/api${endpoint}`;
-  
-  console.log('🔍 Fetching:', url);
-
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
   };
@@ -30,7 +27,7 @@ async function fetchStrapi(endpoint: string): Promise<any> {
   try {
     const response = await fetch(url, {
       headers,
-      cache: 'no-store', // Empezamos sin cache para debug
+      next: { revalidate: 60 }, // Revalidate every 60 seconds
     });
 
     if (!response.ok) {
@@ -38,9 +35,7 @@ async function fetchStrapi(endpoint: string): Promise<any> {
       console.error('❌ Strapi error:', response.status, errorText);
       throw new Error(`Strapi error: ${response.status}`);
     }
-
     const data = await response.json();
-    console.log('✅ Data received:', Object.keys(data));
     return data;
   } catch (error) {
     console.error('❌ Fetch error:', error);
@@ -86,6 +81,7 @@ export async function getProductBySlug(
     const data = await fetchStrapi(
       `/products?filters[slug][$eq]=${slug}&locale=${locale}&populate=*`
     );
+    console.log('Product by slug data:', data);
     return data.data?.[0] || null;
   } catch (error) {
     console.error('Error fetching product:', error);
@@ -158,6 +154,7 @@ export function getStrapiImageUrl(url: string | undefined): string {
   if (url.startsWith('http')) return url;
   return `${STRAPI_URL}${url}`;
 }
+
 /**
  * Helper to get image alt text
  */
