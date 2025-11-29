@@ -6,6 +6,7 @@ import { useCart } from '@/hooks/useCart';
 
 interface ProductsGridProps {
   products: Product[];
+  onAddToCart?: (product: Product, quantity?: number) => void;
 }
 
 export default function ProductsGrid({ products }: ProductsGridProps) {

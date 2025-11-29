@@ -13,6 +13,7 @@ interface CartaContentProps {
   categories: ProductCategory[];
 }
 
+
 export default function CartaContent({ products, categories }: CartaContentProps) {
   const t = useTranslations('carta');
 
