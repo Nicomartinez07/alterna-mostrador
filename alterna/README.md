@@ -43,3 +43,4 @@ Cosas para revisar:
 Carrito lento o no dinamico
 Seccion info Adicional: consultar si lo quieren o si no
 Por cada producto abrir una tarjeta o una pagina dinamica que me traiga toda la info.
+Seccion procesos mostrar productos en mobile

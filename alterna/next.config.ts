@@ -23,6 +23,13 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com',
       },
+      // --- AGREGA ESTE BLOQUE ---
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '/**', // Permite cualquier ruta dentro de Cloudinary
+      },
     ],
   },
 };
