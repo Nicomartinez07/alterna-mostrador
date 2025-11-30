@@ -8,6 +8,7 @@ import RestaurantSchema from '@/components/seo/RestaurantSchema';
 import { getSiteSettings } from '@/lib/strapi';
 import '../globals.css';
 import { CartProvider } from '@/context/CartContext';
+import { Analytics } from '@vercel/analytics/next';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -37,8 +38,10 @@ export default async function LocaleLayout({
         <RestaurantSchema settings={settings} />
       </head>
       <body className="min-h-screen flex flex-col bg-gray-50">
+        <Analytics />
         <CartProvider>
           <NextIntlClientProvider messages={messages}>
+          
             <Header 
               locale={locale} 
               siteName={settings?.nombre_local}
