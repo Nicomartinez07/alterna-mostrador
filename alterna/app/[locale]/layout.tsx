@@ -36,10 +36,23 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <head>
         <RestaurantSchema settings={settings} />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#16a34a" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Alterna" />
+        <link rel="apple-touch-icon" href="/icon-192x192.png" />
       </head>
       <body className="min-h-screen flex flex-col bg-gray-50">
         <Analytics />
         <CartProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-green-600 focus:text-white focus:rounded-lg"
+          >
+            Saltar al contenido principal
+          </a>
           <NextIntlClientProvider messages={messages}>
           
             <Header 
