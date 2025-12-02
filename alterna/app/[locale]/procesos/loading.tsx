@@ -12,7 +12,7 @@ export default function ProcesosLoading() {
         </div>
       </Section>
 
-      <Section noPadding className="py-12 md:py-16">
+      <Section noPadding className="py-12 md:py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4">
           <TimelineSkeleton />
         </div>

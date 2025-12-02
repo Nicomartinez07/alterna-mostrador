@@ -6,7 +6,7 @@ export default function HomeLoading() {
     <>
       <HeroSkeleton />
       
-      <Section>
+      <Section className="bg-white">
         <div className="grid md:grid-cols-2 gap-8 animate-pulse">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="space-y-4">

@@ -4,14 +4,14 @@ import ProductCardSkeleton from '@/components/ui/skeletons/ProductCardSkeleton';
 export default function CartaLoading() {
   return (
     <>
-      <Section className="bg-gradient-to-b from-green-50 to-white">
+      <Section className="bg-gradient-to-b from-green-50 to-white ">
         <div className="text-center space-y-4 animate-pulse">
           <div className="h-10 bg-gray-200 rounded w-64 mx-auto" />
           <div className="h-6 bg-gray-200 rounded w-96 mx-auto" />
         </div>
       </Section>
 
-      <Section>
+      <Section className='bg-white'>
         {/* Filters skeleton */}
         <div className="bg-white rounded-lg shadow-sm p-6 space-y-6 mb-8 animate-pulse">
           <div className="h-12 bg-gray-200 rounded-lg" />

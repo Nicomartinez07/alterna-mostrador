@@ -10,7 +10,7 @@ export default function ContactoLoading() {
         </div>
       </Section>
 
-      <Section>
+      <Section className='bg-white'>
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Left side - Form */}
