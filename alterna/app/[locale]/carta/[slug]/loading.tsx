@@ -2,7 +2,7 @@ import Section from '@/components/ui/Section';
 
 export default function ProductDetailLoading() {
   return (
-    <Section noPadding className="py-8 md:py-12">
+    <Section noPadding className="py-8 md:py-12 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Breadcrumbs skeleton */}
         <div className="mb-6 flex items-center gap-2 animate-pulse">
