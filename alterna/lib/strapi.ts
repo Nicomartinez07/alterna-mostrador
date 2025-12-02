@@ -186,3 +186,28 @@ export function getStrapiImageUrl(url: string | undefined): string {
 export function getStrapiImageAlt(image: any, fallback: string = 'Image'): string {
   return image?.attributes?.alternativeText || image?.alternativeText || fallback;
 }
+
+/**
+ * Get random products (excluding current product)
+ */
+export async function getRandomProducts(
+  excludeId: number,
+  limit: number = 4,
+  locale: string = 'es'
+): Promise<Product[]> {
+  try {
+    const products = await getProducts(locale);
+    
+    // Filter out current product
+    const filtered = products.filter(p => p.id !== excludeId);
+    
+    // Shuffle array
+    const shuffled = filtered.sort(() => 0.5 - Math.random());
+    
+    // Get first N items
+    return shuffled.slice(0, limit);
+  } catch (error) {
+    console.error('Error fetching random products:', error);
+    return [];
+  }
+}

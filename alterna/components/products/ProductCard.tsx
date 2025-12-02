@@ -1,6 +1,8 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { Plus } from 'lucide-react';
 import { getStrapiImageUrl } from '@/lib/strapi';
 import type { Product } from '@/types/strapi';
@@ -12,33 +14,33 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, onAddToCart }: ProductCardProps) {
-  // Los datos vienen directamente, no en product.attributes
+  const params = useParams();
+  const locale = params.locale as string;
   const imageUrl = product.photo?.url;
   const categoryName = product.category?.name;
   const [isAdding, setIsAdding] = useState(false);
 
-  // Función segura para limpiar HTML de la descripción
-  const getCleanDescription = (description: any): string => {
-    if (!description) return '';
-    
-    // Convertir a string si no lo es
-    const descString = String(description);
-    
-    // Eliminar etiquetas HTML si existen
-    return descString.replace(/<[^>]*>/g, '');
+
+  const handleAddClick = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent navigation when clicking add button
+    if (onAddToCart) {
+      onAddToCart(product);
+    }
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+    <Link 
+      href={`/${locale}/carta/${product.slug}`}
+      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full group"
+    >
       {/* Image */}
       <div className="relative aspect-square bg-gray-100">
         <Image
           src={getStrapiImageUrl(imageUrl)}
           alt={product.title}
           fill
-          className="object-cover"
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          unoptimized
         />
         {categoryName && (
           <div className="absolute top-2 left-2">
@@ -51,22 +53,21 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
 
       {/* Content */}
       <div className="p-4 flex-1 flex flex-col">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-green-600 transition-colors">
           {product.title}
         </h3>
         
         {product.description && (
           <p className="text-sm text-gray-600 mb-4 line-clamp-3 flex-1">
-            {getCleanDescription(product.description)}
+            {product.description.replace(/<[^>]*>/g, '')}
           </p>
         )}
 
-       {/* Price and Add button */}
+        {/* Price and Add button */}
         <div className="flex items-center justify-between mt-auto">
           <span className="text-2xl font-bold text-green-600">
             €{product.price.toFixed(2)}
           </span>
-          
           {onAddToCart && (
             <button
               onClick={async () => {
@@ -132,7 +133,6 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
             </button>
           )}
         </div>
-
         {/* Allergens indicator */}
         {product.allergens && (
           <div className="mt-2 pt-2 border-t border-gray-100">
@@ -142,6 +142,6 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
           </div>
         )}
       </div>
-    </div>
+    </Link>
   );
 }
