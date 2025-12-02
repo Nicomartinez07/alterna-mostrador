@@ -69,7 +69,6 @@ export default function ProductDetail({ product, locale }: ProductDetailProps) {
               <span className="text-4xl font-bold text-green-600">
                 €{product.price.toFixed(2)}
               </span>
-              <span className="text-gray-500">IVA incluido</span>
             </div>
           </div>
 

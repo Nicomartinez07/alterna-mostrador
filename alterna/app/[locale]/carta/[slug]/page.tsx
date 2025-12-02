@@ -55,8 +55,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
   ];
 
   return (
-    <Section noPadding className="py-8 md:py-12">
-      <div className="max-w-7xl mx-auto px-4">
+    <Section noPadding className="py-8 md:py-12 bg-white">
+      <div className="max-w-7xl mx-auto px-4 bg-white">
         <Breadcrumbs items={breadcrumbItems} locale={locale} />
         
         <ProductDetail product={product} locale={locale} />
