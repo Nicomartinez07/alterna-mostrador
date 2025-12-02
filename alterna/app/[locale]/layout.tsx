@@ -7,7 +7,7 @@ import Footer from '@/components/layout/Footer';
 import RestaurantSchema from '@/components/seo/RestaurantSchema';
 import { getSiteSettings } from '@/lib/strapi';
 import '../globals.css';
-import { CartProvider } from '@/context/CartContext';
+import { CartProvider } from '@/contexts/CartContext';
 import { Analytics } from '@vercel/analytics/next';
 
 export function generateStaticParams() {

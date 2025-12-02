@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { X, ShoppingBag } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CartItem from './CartItem';
-import { useCart } from '@/hooks/useCart';
+import { useCart } from '@/contexts/CartContext';
 
 interface CartDrawerProps {
   isOpen: boolean;

@@ -2,7 +2,7 @@
 import { useTranslations } from 'next-intl';
 import ProductCard from './ProductCard';
 import type { Product } from '@/types/strapi';
-import { useCart } from '@/hooks/useCart';
+import { useCart } from '@/contexts/CartContext';
 
 interface ProductsGridProps {
   products: Product[];

@@ -7,7 +7,7 @@ import { Menu, X, ShoppingCart } from 'lucide-react';
 import MobileMenu from './MobileMenu';
 import LanguageSwitcher from './LanguageSwitcher';
 import CartDrawer from '../cart/CartDrawer';
-import { useCart } from '@/hooks/useCart';
+import { useCart } from '@/contexts/CartContext';
 
 interface HeaderProps {
   locale: string;

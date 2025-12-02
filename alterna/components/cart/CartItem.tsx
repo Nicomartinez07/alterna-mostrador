@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Minus, Plus, Trash2 } from 'lucide-react';
 import { getStrapiImageUrl } from '@/lib/strapi';
-import type { CartItem as CartItemType } from '@/hooks/useCart';
+import type { CartItem as CartItemType } from '@/contexts/CartContext';
 
 interface CartItemProps {
   item: CartItemType;

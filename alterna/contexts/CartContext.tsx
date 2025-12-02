@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import type { Product } from '@/types/strapi';
 
 export interface CartItem {
@@ -8,9 +8,22 @@ export interface CartItem {
   quantity: number;
 }
 
+interface CartContextType {
+  items: CartItem[];
+  itemCount: number;
+  total: number;
+  addItem: (product: Product, quantity?: number) => void;
+  removeItem: (productId: number) => void;
+  updateQuantity: (productId: number, quantity: number) => void;
+  clearCart: () => void;
+  isLoaded: boolean;
+}
+
+const CartContext = createContext<CartContextType | undefined>(undefined);
+
 const CART_STORAGE_KEY = 'alterna_cart';
 
-export function useCart() {
+export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -91,7 +104,7 @@ export function useCart() {
   // Get item count
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
-  return {
+  const value = {
     items,
     itemCount,
     total,
@@ -101,4 +114,15 @@ export function useCart() {
     clearCart,
     isLoaded,
   };
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+}
+
+// Hook personalizado para usar el carrito
+export function useCart() {
+  const context = useContext(CartContext);
+  if (context === undefined) {
+    throw new Error('useCart debe ser usado dentro de un CartProvider');
+  }
+  return context;
 }

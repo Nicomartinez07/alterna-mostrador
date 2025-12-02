@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import ProductsGrid from './ProductsGrid';
 import CategoryFilter from './CategoryFilter';
 import SearchBar from './SearchBar';
-import { useCart } from '@/hooks/useCart';
+import { useCart } from '@/contexts/CartContext';
 import type { Product, ProductCategory } from '@/types/strapi';
 
 interface CartaContentProps {
