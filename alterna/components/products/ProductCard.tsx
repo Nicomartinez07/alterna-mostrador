@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { Plus } from 'lucide-react';
 import { getStrapiImageUrl } from '@/lib/strapi';
 import type { Product } from '@/types/strapi';
@@ -19,6 +20,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
   const imageUrl = product.photo?.url;
   const categoryName = product.category?.name;
   const [isAdding, setIsAdding] = useState(false);
+  const t = useTranslations('carta');
 
 return (
   <Link 
@@ -107,7 +109,7 @@ return (
               )}
 
               <span className="font-semibold">
-                {isAdding ? 'Añadiendo...' : 'Agregar'}
+                {isAdding ? t('adding') : t('add')}
               </span>
             </button>
           </div>

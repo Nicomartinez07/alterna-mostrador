@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 interface Stat {
   number: string;
   label: string;
@@ -9,11 +11,13 @@ interface StatsSectionProps {
 }
 
 export default function StatsSection({ stats }: StatsSectionProps) {
+  const t = useTranslations('StatsSection');
+  
   const defaultStats: Stat[] = [
-    { number: '100', label: 'Productos veganos', suffix: '+' },
-    { number: '5', label: 'Años de experiencia', suffix: '+' },
-    { number: '1000', label: 'Clientes felices', suffix: '+' },
-    { number: '100', label: 'Artesanal', suffix: '%' },
+    { number: '100', label: t('veganProducts'), suffix: '+' },
+    { number: '5', label: t('yearsExperience'), suffix: '+' },
+    { number: '1000', label: t('happyCustomers'), suffix: '+' },
+    { number: '100', label: t('artisan'), suffix: '%' },
   ];
 
   const items = stats || defaultStats;

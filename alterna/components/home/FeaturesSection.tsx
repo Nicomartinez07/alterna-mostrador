@@ -1,4 +1,5 @@
 import { Leaf, Award, Heart, Clock } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface Feature {
   icon: React.ReactNode;
@@ -11,26 +12,28 @@ interface FeaturesSectionProps {
 }
 
 export default function FeaturesSection({ features }: FeaturesSectionProps) {
+  const t = useTranslations('FeaturesSection');
+  
   const defaultFeatures: Feature[] = [
     {
       icon: <Leaf className="w-8 h-8" />,
-      title: '100% Vegano',
-      description: 'Todos nuestros productos son plant-based, sin ingredientes de origen animal.',
+      title: t('veganTitle'),
+      description: t('veganDescription'),
     },
     {
       icon: <Award className="w-8 h-8" />,
-      title: 'Artesanal',
-      description: 'Elaborado a mano cada día con técnicas tradicionales y mucho amor.',
+      title: t('artisanTitle'),
+      description: t('artisanDescription'),
     },
     {
       icon: <Heart className="w-8 h-8" />,
-      title: 'Ingredientes Locales',
-      description: 'Trabajamos con productores de proximidad para garantizar frescura y calidad.',
+      title: t('localTitle'),
+      description: t('localDescription'),
     },
     {
       icon: <Clock className="w-8 h-8" />,
-      title: 'Hecho Diariamente',
-      description: 'Productos frescos elaborados cada mañana. Sin conservantes ni químicos.',
+      title: t('freshTitle'),
+      description: t('freshDescription'),
     },
   ];
 

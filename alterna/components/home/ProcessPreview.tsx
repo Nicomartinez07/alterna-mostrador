@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { getStrapiImageUrl } from '@/lib/strapi';
 import type { ProcessStep } from '@/types/strapi';
+import { useTranslations } from 'next-intl';
 
 interface ProcessPreviewProps {
   steps: ProcessStep[];
@@ -21,6 +22,9 @@ export default function ProcessPreview({
 
   // Tomar solo los primeros 3 pasos
   const previewSteps = steps.slice(0, 3);
+  const t = useTranslations('home');
+
+  
 
   return (
     <section className="py-16 md:py-20 bg-white">
@@ -88,7 +92,7 @@ export default function ProcessPreview({
             href={`/${locale}/procesos`}
             className="inline-flex items-center gap-2 px-8 py-3 border-2 border-gray-900 text-gray-900 font-semibold rounded-lg hover:bg-gray-900 hover:text-white transition-colors group"
           >
-            Conoce más sobre nuestro proceso
+            {t('prc_btn_learn')}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>

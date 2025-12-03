@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { MapPin, Clock, Phone, ArrowRight } from 'lucide-react';
 import type { SiteSettings } from '@/types/strapi';
+import { useTranslations } from 'next-intl';
 
 interface LocationQuickProps {
   settings: SiteSettings | null;
@@ -10,6 +11,7 @@ interface LocationQuickProps {
 export default function LocationQuick({ settings, locale }: LocationQuickProps) {
   if (!settings) return null;
 
+  const t = useTranslations('home');
   return (
     <section className="py-16 md:py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4">
@@ -17,7 +19,7 @@ export default function LocationQuick({ settings, locale }: LocationQuickProps) 
           {/* Info Side */}
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Visítanos
+              {t('visit')}
             </h2>
             
             <div className="space-y-4 mb-8">
@@ -28,7 +30,7 @@ export default function LocationQuick({ settings, locale }: LocationQuickProps) 
                     <MapPin className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Dirección</h3>
+                    <h3 className="font-semibold text-gray-900 mb-1">{t('address')}</h3>
                     <p className="text-gray-600">{settings.direccion}</p>
                   </div>
                 </div>
@@ -41,7 +43,7 @@ export default function LocationQuick({ settings, locale }: LocationQuickProps) 
                     <Clock className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Horarios</h3>
+                    <h3 className="font-semibold text-gray-900 mb-1">{t('schedule')}</h3>
                     <div 
                       className="text-gray-600 text-sm prose prose-sm"
                       dangerouslySetInnerHTML={{ __html: settings.horarios }}
@@ -57,7 +59,7 @@ export default function LocationQuick({ settings, locale }: LocationQuickProps) 
                     <Phone className="w-6 h-6 text-purple-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Teléfono</h3>
+                    <h3 className="font-semibold text-gray-900 mb-1">{t('phone')}</h3>
                     <a 
                       href={`tel:${settings.telefono}`}
                       className="text-purple-600 hover:text-purple-700 font-medium"
@@ -75,7 +77,7 @@ export default function LocationQuick({ settings, locale }: LocationQuickProps) 
                 href={`/${locale}/contacto`}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#1f4f49] text-white font-semibold rounded-lg hover:[#1f4f49] transition-colors group"
               >
-                Cómo llegar
+                {t('howToGet')}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
 
@@ -86,7 +88,7 @@ export default function LocationQuick({ settings, locale }: LocationQuickProps) 
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#1f4f49] text-[#1f4f49] font-semibold rounded-lg hover:bg-green-50 transition-colors"
                 >
-                  Escribinos por WhatsApp
+                  {t('wpp')}
                 </a>
               )}
             </div>
@@ -109,7 +111,7 @@ export default function LocationQuick({ settings, locale }: LocationQuickProps) 
               <div className="w-full h-full bg-gray-200 flex items-center justify-center">
                 <div className="text-center text-gray-500">
                   <MapPin className="w-16 h-16 mx-auto mb-2" />
-                  <p>Mapa no disponible</p>
+                  <p>{t('noMap')}</p>
                 </div>
               </div>
             )}

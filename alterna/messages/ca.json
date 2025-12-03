@@ -27,7 +27,16 @@
     "cta_subtitle": "Visita'ns a la nostra botiga o fes la teva comanda per emportar",
     "cta_btn_menu": "Veure carta",
     "cta_btn_takeaway": "Ordenar per anar",
-    "cta_btn_contact": "Com arribar-hi"
+    "cta_btn_contact": "Com arribar-hi",
+    "prc_btn_learn": "Més informació sobre els nostres processos",
+    "visit": "Visiteu-nos",
+    "address": "Adreça",
+    "phone": "Telèfon", 
+    "schedule": "Horaris",
+    "howToGet": "Com aconseguir", 
+    "wpp": "Escriu-nos a WhatsApp",
+    "noMap": "Mapa no disponible",
+    "watchProducts": "Veure tota la carta"
   },
   "cart": {
     "title": "Cistella",
@@ -165,6 +174,24 @@
     "products": "productes",
     "clearFilters": "Netejar filtres",
     "noResultsTitle": "No s'han trobat productes",
-    "noResultsSubtitle": "Intenta canviar els filtres o la cerca"
+    "noResultsSubtitle": "Intenta canviar els filtres o la cerca",
+    "add": "Afegir",
+    "adding": "Afegint"
+  },
+  "FeaturesSection": {
+    "veganTitle": "100% Vegà",
+    "veganDescription": "Tots els nostres productes són vegetals, sense ingredients d'origen animal.",
+    "artisanTitle": "Artesanal",
+    "artisanDescription": "Elaborat a mà cada dia amb tècniques tradicionals i molt d'amor.",
+    "localTitle": "Ingredients Locals",
+    "localDescription": "Treball amb productors de proximitat per garantir frescor i qualitat.",
+    "freshTitle": "Fet Diàriament",
+    "freshDescription": "Productes frescos elaborats cada matí. Sense conservants ni químics."
+  },
+  "StatsSection": {
+    "veganProducts": "Productes vegans",
+    "yearsExperience": "Anys d'experiència",
+    "happyCustomers": "Clients feliços",
+    "artisan": "Artesanal"
   }
 }

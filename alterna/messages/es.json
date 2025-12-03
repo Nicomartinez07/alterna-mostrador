@@ -27,7 +27,16 @@
     "cta_subtitle": "Visitanos en nuestro local o hacé tu pedido para llevar",
     "cta_btn_menu": "Ver carta",
     "cta_btn_takeaway": "Pedir para llevar",
-    "cta_btn_contact": "Cómo llegar"
+    "cta_btn_contact": "Cómo llegar",
+    "prc_btn_learn": "Conoce más sobre nuestros procesos",
+    "visit": "Visítanos",
+    "address": "Dirección",
+    "phone": "Teléfono", 
+    "schedule": "Horarios",
+    "howToGet": "Cómo llegar", 
+    "wpp": "Escribinos por WhatsApp",
+    "noMap": "Mapa no disponible",
+    "watchProducts": "Ver toda la carta"
   },
   "cart": {
     "title": "Carrito",
@@ -165,7 +174,24 @@
     "products": "productos",
     "clearFilters": "Limpiar filtros",
     "noResultsTitle": "No se encontraron productos",
-    "noResultsSubtitle": "Intenta cambiar los filtros o la búsqueda"
+    "noResultsSubtitle": "Intenta cambiar los filtros o la búsqueda",
+    "add": "Añadir",
+    "adding": "Añadiendo"
+  },
+  "FeaturesSection": {
+    "veganTitle": "100% Vegano",
+    "veganDescription": "Todos nuestros productos son plant-based, sin ingredientes de origen animal.",
+    "artisanTitle": "Artesanal",
+    "artisanDescription": "Elaborado a mano cada día con técnicas tradicionales y mucho amor.",
+    "localTitle": "Ingredientes Locales",
+    "localDescription": "Trabajamos con productores de proximidad para garantizar frescura y calidad.",
+    "freshTitle": "Hecho Diariamente",
+    "freshDescription": "Productos frescos elaborados cada mañana. Sin conservantes ni químicos."
+  },
+  "StatsSection": {
+    "veganProducts": "Productos veganos",
+    "yearsExperience": "Años de experiencia",
+    "happyCustomers": "Clientes felices",
+    "artisan": "Artesanal"
   }
-
 }

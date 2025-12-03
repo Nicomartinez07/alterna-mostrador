@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { getStrapiImageUrl } from '@/lib/strapi';
 import type { Product } from '@/types/strapi';
+import { useTranslations } from 'next-intl';
 
 interface FeaturedProductsProps {
   products: Product[];
@@ -18,7 +19,7 @@ export default function FeaturedProducts({
   subtitle = 'Los favoritos de nuestros clientes',
 }: FeaturedProductsProps) {
   if (products.length === 0) return null;
-
+  const t = useTranslations('home')
   return (
     <section className="py-16 md:py-20 bg-gradient-to-b from-green-50 to-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -78,7 +79,7 @@ export default function FeaturedProducts({
             href={`/${locale}/carta`}
             className="inline-flex items-center gap-2 px-8 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors group"
           >
-            Ver toda la carta
+            {t('watchProducts')}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>

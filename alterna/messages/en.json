@@ -27,7 +27,16 @@
     "cta_subtitle": "Visit us at our shop or place your order to go",
     "cta_btn_menu": "View menu",
     "cta_btn_takeaway": "Order to go",
-    "cta_btn_contact": "How to get here"
+    "cta_btn_contact": "How to get here",
+    "prc_btn_learn": "Learn more about our processes",
+    "visit": "Visit us",
+    "address": "Address",
+    "phone": "Phone", 
+    "schedule": "Opening Hours",
+    "howToGet": "How to get", 
+    "wpp": "Write to us on WhatsApp",
+    "noMap": "Map not available",
+    "watchProducts": "See all the product menu"
   },
   "cart": {
     "title": "Cart",
@@ -165,7 +174,24 @@
     "products": "products",
     "clearFilters": "Clear filters",
     "noResultsTitle": "No products found",
-    "noResultsSubtitle": "Try adjusting your filters or search"
+    "noResultsSubtitle": "Try adjusting your filters or search",
+    "add": "Add",
+    "adding": "Adding"
+  },
+  "FeaturesSection": {
+    "veganTitle": "100% Vegan",
+    "veganDescription": "All our products are plant-based, with no animal-derived ingredients.",
+    "artisanTitle": "Artisan",
+    "artisanDescription": "Handcrafted daily using traditional techniques and lots of love.",
+    "localTitle": "Local Ingredients",
+    "localDescription": "We work with local producers to guarantee freshness and quality.",
+    "freshTitle": "Made Daily",
+    "freshDescription": "Fresh products made every morning. No preservatives or chemicals."
+  },
+  "StatsSection": {
+    "veganProducts": "Vegan products",
+    "yearsExperience": "Years of experience",
+    "happyCustomers": "Happy customers",
+    "artisan": "Artisan"
   }
-  
 }

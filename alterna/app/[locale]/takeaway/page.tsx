@@ -148,6 +148,44 @@ export default async function TakeawayPage({
           )}
         </div>
       </Section>
+      {/* Info adicional 
+      <Section title="Información importante">
+        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="text-center p-6">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full mb-4">
+              <Clock className="w-6 h-6 text-blue-600" />
+            </div>
+            <h4 className="font-semibold text-gray-900 mb-2">Horarios</h4>
+            <p className="text-sm text-gray-600">
+              Pedidos de Lun-Vie: 10:00 - 20:00<br/>
+              Sáb-Dom: 11:00 - 18:00
+            </p>
+          </div>
+
+          <div className="text-center p-6">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full mb-4">
+              <MapPin className="w-6 h-6 text-green-600" />
+            </div>
+            <h4 className="font-semibold text-gray-900 mb-2">Zona de entrega</h4>
+            <p className="text-sm text-gray-600">
+              Barcelona ciudad<br/>
+              Radio de 5km del local
+            </p>
+          </div>
+
+          <div className="text-center p-6">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-amber-100 rounded-full mb-4">
+              <Smartphone className="w-6 h-6 text-amber-600" />
+            </div>
+            <h4 className="font-semibold text-gray-900 mb-2">Pedido mínimo</h4>
+            <p className="text-sm text-gray-600">
+              €15 para delivery<br/>
+              Sin mínimo para retiro
+            </p>
+          </div>
+        </div>
+      </Section>
+      */}
     </>
   );
 }

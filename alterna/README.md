@@ -40,5 +40,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 Cosas para revisar:
  
-Seccion info Adicional: consultar si lo quieren o si no
-Traducciones en pagina home, añadir en carta
+Seccion info Adicional en takeAway: consultar si lo quieren o si no
+Tipografias y imagen de la marca 
+Problema en enrutado de un producto al cambiar de lenguaje porque no encuentra el mismo nombre
