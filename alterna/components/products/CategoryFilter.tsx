@@ -34,7 +34,7 @@ export default function CategoryFilter({
           onClick={() => onSelectCategory(category.id)}
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             selectedCategory === category.id
-              ? 'bg-green-600 text-white'
+              ? 'bg-[#163834] text-white'
               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
           }`}
         >

@@ -40,7 +40,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 Cosas para revisar:
  
-Carrito lento o no dinamico
 Seccion info Adicional: consultar si lo quieren o si no
-Por cada producto abrir una tarjeta o una pagina dinamica que me traiga toda la info.
-Seccion procesos mostrar productos en mobile
+Traducciones en pagina home, añadir en carta
