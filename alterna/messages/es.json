@@ -15,22 +15,19 @@
     "error": "Error"
   },
   "home": {
-    "welcome": "Bienvenido a Alterna Mostrador",
+    "metaTitle": "Inicio - Comida Vegana Artesanal",
+    "metaDescription": "Panadería vegana artesanal en Barcelona. Productos frescos elaborados diariamente con ingredientes locales.",
+    "welcome": "Comida vegana, artesanal y consciente",
     "hero_cta": "Ver carta",
-
-    "intro_title": "Comida vegana artesanal",
-    "intro_subtitle": "Elaborada con amor y los mejores ingredientes de la tierra",
-
-    "intro_p1": "En Alterna Mostrador creemos que la comida vegana puede ser deliciosa, nutritiva y sostenible. Cada día preparamos nuestros productos de forma artesanal, con ingredientes frescos y de proximidad.",
-    "intro_p2": "Desde empanadas hasta panes de masa madre, cada bocado está pensado para nutrir tu cuerpo y respetar el planeta. Te invitamos a descubrir nuestros sabores y a formar parte de esta alternativa consciente.",
-
+    "featured_title": "Nuestros Destacados",
+    "featured_subtitle": "Los favoritos de nuestros clientes",
+    "process_title": "Nuestro Proceso Artesanal",
+    "process_subtitle": "De la selección de ingredientes al producto final",
     "cta_title": "¿Listo para probar?",
-    "cta_subtitle": "Visítanos en nuestro local o haz tu pedido para llevar",
+    "cta_subtitle": "Visitanos en nuestro local o hacé tu pedido para llevar",
     "cta_btn_menu": "Ver carta",
-    "cta_btn_contact": "Cómo llegar",
-
-    "metaTitle": "Inicio",
-    "metaDescription": "Comida vegana artesanal en Barcelona. Productos frescos, elaborados con amor y los mejores ingredientes."
+    "cta_btn_takeaway": "Pedir para llevar",
+    "cta_btn_contact": "Cómo llegar"
   },
   "cart": {
     "title": "Carrito",

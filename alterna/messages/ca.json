@@ -15,22 +15,19 @@
     "error": "Error"
   },
   "home": {
-    "welcome": "Benvingut a Alterna Mostrador",
+    "metaTitle": "Inici - Menjar Vegà Artesanal",
+    "metaDescription": "Fleca vegana artesana a Barcelona. Productes frescs elaborats diàriament amb ingredients locals.",
+    "welcome": "Menjar vegà, artesà i conscient",
     "hero_cta": "Veure carta",
-
-    "intro_title": "Menjar vegà artesanal",
-    "intro_subtitle": "Elaborada amb amor i els millors ingredients de la terra",
-
-    "intro_p1": "A Alterna Mostrador creiem que el menjar vegà pot ser deliciós, nutritiu i sostenible. Cada dia preparem els nostres productes de manera artesanal, amb ingredients frescos i de proximitat.",
-    "intro_p2": "Des d'empanades fins a pans de massa mare, cada mos és pensat per nodrir el teu cos i respectar el planeta. T'invitem a descobrir els nostres sabors i formar part d’aquesta alternativa conscient.",
-
+    "featured_title": "Els Nostres Destacats",
+    "featured_subtitle": "Els preferits dels nostres clients",
+    "process_title": "El Nostre Procés Artesà",
+    "process_subtitle": "De la selecció d'ingredients al producte final",
     "cta_title": "A punt per tastar?",
-    "cta_subtitle": "Vine al nostre local o fes la teva comanda per emportar",
+    "cta_subtitle": "Visita'ns a la nostra botiga o fes la teva comanda per emportar",
     "cta_btn_menu": "Veure carta",
-    "cta_btn_contact": "Com arribar",
-
-    "metaTitle": "Inici",
-    "metaDescription": "Menjar vegà artesanal a Barcelona. Productes frescos, elaborats amb amor i els millors ingredients."
+    "cta_btn_takeaway": "Ordenar per anar",
+    "cta_btn_contact": "Com arribar-hi"
   },
   "cart": {
     "title": "Cistella",

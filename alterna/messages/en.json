@@ -15,22 +15,19 @@
     "error": "Error"
   },
   "home": {
-    "welcome": "Welcome to Alterna Mostrador",
+    "metaTitle": "Home - Artisan Vegan Food",
+    "metaDescription": "Artisan vegan bakery in Barcelona. Fresh products made daily with local ingredients.",
+    "welcome": "Vegan, artisan, and conscious food",
     "hero_cta": "View menu",
-
-    "intro_title": "Artisanal vegan food",
-    "intro_subtitle": "Made with love and the best ingredients from the earth",
-
-    "intro_p1": "At Alterna Mostrador we believe vegan food can be delicious, nutritious, and sustainable. Every day we prepare our products by hand, using fresh and local ingredients.",
-    "intro_p2": "From empanadas to sourdough bread, every bite is crafted to nourish your body and respect the planet. We invite you to discover our flavors and join this conscious alternative.",
-
+    "featured_title": "Our Featured Items",
+    "featured_subtitle": "Our customers' favorites",
+    "process_title": "Our Artisan Process",
+    "process_subtitle": "From ingredient selection to the final product",
     "cta_title": "Ready to try?",
-    "cta_subtitle": "Visit us at our store or place your takeaway order",
+    "cta_subtitle": "Visit us at our shop or place your order to go",
     "cta_btn_menu": "View menu",
-    "cta_btn_contact": "How to get here",
-
-    "metaTitle": "Home",
-    "metaDescription": "Artisanal vegan food in Barcelona. Fresh products made with love and the best ingredients."
+    "cta_btn_takeaway": "Order to go",
+    "cta_btn_contact": "How to get here"
   },
   "cart": {
     "title": "Cart",

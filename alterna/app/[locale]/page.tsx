@@ -1,14 +1,16 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import { getSiteSettings } from '@/lib/strapi';
+import { getSiteSettings, getProducts, getProcessSteps } from '@/lib/strapi';
 import Hero from '@/components/ui/Hero';
+import FeaturesSection from '@/components/home/FeaturesSection';
+import FeaturedProducts from '@/components/home/FeaturedProducts';
+import ProcessPreview from '@/components/home/ProcessPreview';
+import StatsSection from '@/components/home/StatsSection';
+import LocationQuick from '@/components/home/LocationQuick';
 import Section from '@/components/ui/Section';
 import { Link } from '@/navigation';
 import type { Metadata } from 'next';
 import { generatePageMetadata } from '@/lib/metadata';
 
-// -----------------------------
-// METADATA TRADUCIDA
-// -----------------------------
 export async function generateMetadata({
   params,
 }: {
@@ -25,39 +27,48 @@ export async function generateMetadata({
   });
 }
 
-// -----------------------------
-// PAGE
-// -----------------------------
 export default async function HomePage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-
-  // Fija el locale para la renderización estática
   setRequestLocale(locale);
 
-  const settings = await getSiteSettings(locale);
+  // Fetch all data in parallel
+  const [settings, products, processSteps] = await Promise.all([
+    getSiteSettings(locale),
+    getProducts(locale),
+    getProcessSteps(locale),
+  ]);
 
-  return <HomeContent locale={locale} settings={settings} />;
+  // Get featured products (you can filter by a "featured" field or just take first 4)
+  const featuredProducts = products.slice(0, 4);
+
+  return <HomeContent 
+    locale={locale} 
+    settings={settings}
+    featuredProducts={featuredProducts}
+    processSteps={processSteps}
+  />;
 }
 
-// -----------------------------
-// CLIENT-SAFE CONTENT
-// -----------------------------
 async function HomeContent({
   locale,
   settings,
+  featuredProducts,
+  processSteps,
 }: {
   locale: string;
   settings: any;
+  featuredProducts: any[];
+  processSteps: any[];
 }) {
   const t = await getTranslations({ locale, namespace: 'home' });
 
   return (
     <>
-      {/* Hero Section */}
+      {/* 1. Hero */}
       <Hero
         title={settings?.nombre_local || 'Alterna Mostrador'}
         tagline={settings?.tagline || t('welcome')}
@@ -67,49 +78,52 @@ async function HomeContent({
         locale={locale}
       />
 
-      {/* Intro Section */}
-      <Section
-        title={t('intro_title')}
-        subtitle={t('intro_subtitle')}
-        className="bg-gray-50"
-      >
-        <div className="grid md:grid-cols-2 gap-8 text-gray-700">
-          <div>
-            <p className="mb-4">{t('intro_p1')}</p>
-          </div>
+      {/* 2. Features/Valores */}
+      <FeaturesSection />
 
-          <div>
-            <p className="mb-4">{t('intro_p2')}</p>
-          </div>
-        </div>
-      </Section>
+      {/* 3. Stats */}
+      <StatsSection />
 
-      {/* CTA Section */}
-      <Section className="bg-green-50">
+      {/* 4. Featured Products */}
+      <FeaturedProducts
+        products={featuredProducts}
+        locale={locale}
+        title={t('featured_title')}
+        subtitle={t('featured_subtitle')}
+      />
+
+      {/* 5. Process Preview */}
+      <ProcessPreview
+        steps={processSteps}
+        locale={locale}
+        title={t('process_title')}
+        subtitle={t('process_subtitle')}
+      />
+
+      {/* 6. Location Quick Info */}
+      <LocationQuick settings={settings} locale={locale} />
+
+      {/* 7. Final CTA */}
+      <Section className="bg-[#1f4f49] text-white">
         <div className="text-center">
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          <h3 className="text-3xl md:text-4xl font-bold mb-4">
             {t('cta_title')}
           </h3>
-
-          <p className="text-gray-600 mb-6 max-w-xl mx-auto">
+          <p className="text-green-50 mb-8 max-w-2xl mx-auto text-lg">
             {t('cta_subtitle')}
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {/* Botón: Carta */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center ">
             <Link
               href="/carta"
-              className="inline-block px-8 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors"
+              className="inline-block px-8 py-4 bg-white text-[#1f4f49] font-bold rounded-lg hover:bg-green-50 transition-colors shadow-xl hover:shadow-2xl transform hover:scale-105"
             >
               {t('cta_btn_menu')}
             </Link>
-
-            {/* Botón: Contacto */}
             <Link
-              href="/contacto"
-              className="inline-block px-8 py-3 border-2 border-gray-900 text-gray-900 font-semibold rounded-lg hover:bg-gray-900 hover:text-white transition-colors"
+              href="/takeaway"
+              className="inline-block px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-[#1f4f49] transition-colors"
             >
-              {t('cta_btn_contact')}
+              {t('cta_btn_takeaway')}
             </Link>
           </div>
         </div>
