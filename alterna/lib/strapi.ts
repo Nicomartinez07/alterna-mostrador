@@ -87,13 +87,17 @@ export async function getSiteSettings(locale: string = 'es'): Promise<SiteSettin
  */
 export async function getProducts(locale: string = 'es'): Promise<Product[]> {
   try {
-    const data = await fetchStrapi(`/products?locale=${locale}&populate=*`);
+    const data = await fetchStrapi(
+      `/products?filters[visible][$eq]=true&locale=${locale}&populate=*`
+    );
+
     return data.data || [];
   } catch (error) {
     console.error('Error fetching products:', error);
     return [];
   }
 }
+
 
 /**
  * Get single product by slug
@@ -104,15 +108,15 @@ export async function getProductBySlug(
 ): Promise<Product | null> {
   try {
     const data = await fetchStrapi(
-      `/products?filters[slug][$eq]=${slug}&locale=${locale}&populate=*`
+      `/products?filters[slug][$eq]=${slug}&filters[visible][$eq]=true&locale=${locale}&populate=*`
     );
-    console.log('Product by slug data:', data);
     return data.data?.[0] || null;
   } catch (error) {
     console.error('Error fetching product:', error);
     return null;
   }
 }
+
 
 /**
  * Get all product categories
@@ -136,7 +140,7 @@ export async function getProductsByCategory(
 ): Promise<Product[]> {
   try {
     const data = await fetchStrapi(
-      `/products?filters[category][id][$eq]=${categoryId}&locale=${locale}&populate=*`
+      `/products?filters[product_category][id][$eq]=${categoryId}&filters[visible][$eq]=true&locale=${locale}&populate=*`
     );
     return data.data || [];
   } catch (error) {

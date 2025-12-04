@@ -10,8 +10,8 @@ export default function TakeawayLoading() {
         </div>
       </Section>
 
-      <Section>
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto bg-white">
+      <Section className='bg-white'>
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto ">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="h-64 bg-gray-200 rounded-2xl animate-pulse" />
           ))}

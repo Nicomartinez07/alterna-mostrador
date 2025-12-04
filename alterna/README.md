@@ -42,4 +42,7 @@ Cosas para revisar:
  
 Seccion info Adicional en takeAway: consultar si lo quieren o si no
 Tipografias y imagen de la marca 
+
+Que cambiar: 
+
 Problema en enrutado de un producto al cambiar de lenguaje porque no encuentra el mismo nombre
